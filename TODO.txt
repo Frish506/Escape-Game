@@ -1,0 +1,43 @@
+Escape Alpha TODO List
+
+Alpha Release Requirements
+- Modify BoardBuilder class so it can make a board with the correct coordinates given a file name
+  that leads to a configuration file
+- Implement BoardInitiliazer so it can instantiate the different board types
+- Implement 3 coordinate types w/ static makeCoordinate() method
+	- SquareCoordinate
+	- HexCoordinate
+	- OrthoCoordinate
+	
+TODO:
+The boards use coordinates. Therefore, make coordinates first as they should be able to exist on their own without a board
+
+COORDINATE
+1. Implement 3 coordinate types w/ static makeCoordinate() method. All must have overrides of equals() and hashCode().
+Also must implement distanceTo(coordinate C)
+All Coordinates line up with their CoordinateID types, have x & y ints, and
+	1.1 - SquareCoordinate - makeCoordinate() will return simple SquareCoordinate. x & y cannot be < 1
+		1.12 - equals() will just be x==x & y==y & type matching
+		1.13 - hashCode() simply hash using x & y
+		1.14 - distanceTo use simple Chebyshev
+		
+	1.2 - OrthoSquareCoordinate - Same as square, but Manhattan for distance
+		
+	1.3 - HexCoordinate - makeCoordinate() will return simple hexCoordinate. x & y can be int
+		1.31 - equals() will just be x==x & y==y & type matching
+		1.32 - hashCode() simply hash using x & y
+		1.33 - distanceTo use cube logic
+		1.34 - ID is Hex CoordinateID
+	
+
+
+BOARD
+1. All 3 Boards (IN ORDER Square, OrthoSquare, Hex)
+	1.1 - Build to a specific size
+		1.11 - Account for infinite boards (Hex)
+	1.2 - Properly place piece - Check bounds
+	1.3 - Properly retrieve pieces - Check bounds
+	1.4 - Properly set location type
+
+2. BoardBuilder
+	2.1 - Set up so it can differentiate between three different coordinates/squares
