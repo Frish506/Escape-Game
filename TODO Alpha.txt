@@ -23,21 +23,32 @@ All Coordinates line up with their CoordinateID types, have x & y ints, and
 		
 	1.2 - OrthoSquareCoordinate - Same as square, but Manhattan for distance
 		
-	1.3 - HexCoordinate - makeCoordinate() will return simple hexCoordinate. x & y can be int
+	1.3 - HexCoordinate - makeCoordinate() will return simple hexCoordinate. x & y can be infinite, and therefore there will be no range
 		1.31 - equals() will just be x==x & y==y & type matching
 		1.32 - hashCode() simply hash using x & y
-		1.33 - distanceTo use cube logic
+		1.33 - distanceTo use cube logic but in 2D
 		1.34 - ID is Hex CoordinateID
-	
-
 
 BOARD
 1. All 3 Boards (IN ORDER Square, OrthoSquare, Hex)
 	1.1 - Build to a specific size
 		1.11 - Account for infinite boards (Hex)
+		1.12 - Can't be negative, square boards can't be 0
 	1.2 - Properly place piece - Check bounds
 	1.3 - Properly retrieve pieces - Check bounds
 	1.4 - Properly set location type
+	1.5 - Get location type
+	1.6 - Prevent putting a piece at a blocked location
 
 2. BoardBuilder
 	2.1 - Set up so it can differentiate between three different coordinates/squares
+	2.2 - Streamline it to allow for easy passing
+	
+3. Create interface (StandardBoard) extended from Board to allow for standard functions to apply to all regular boards
+	3.1 - SetLocationType()
+	
+ADDITIONAL TESTING
+1. Can't place pieces outside of the board
+2. Can place pieces anywhere on an infinite hex board
+3. Hex boards can be finite and infinite
+4. Test placement

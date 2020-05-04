@@ -30,6 +30,7 @@ import escape.util.*;
  */
 public class BoardBuilder
 {
+	private EscapeGameInitializer gi;
 	private BoardInitializer bi;
 	/**
 	 * The constructor for this takes a file name. It is either an absolute path
@@ -37,6 +38,7 @@ public class BoardBuilder
 	 * @param fileName
 	 * @throws Exception 
 	 */
+	
 	public BoardBuilder(File fileName) throws Exception
 	{
 		JAXBContext contextObj = JAXBContext.newInstance(BoardInitializer.class);
@@ -44,35 +46,41 @@ public class BoardBuilder
         bi = (BoardInitializer)mub.unmarshal(new FileReader(fileName));
 	}
 	
+	public BoardBuilder(EscapeGameInitializer egi) {
+		gi = egi;
+	}
+	
+	@SuppressWarnings("rawtypes")
 	public StandardBoard makeBoard()
 	{
 		CoordinateID currId = null;
 		StandardBoard board = null;
-		switch(bi.getCoordinateId()) {
+		switch(gi.getCoordinateType()) { //Check what kind of board it is, then make that board
 			case SQUARE:
-				board = new SquareBoard(bi.getxMax(), bi.getyMax());
+				board = new SquareBoard(gi.getxMax(), gi.getyMax());
 				currId = CoordinateID.SQUARE;
 				break;
 			case ORTHOSQUARE: 
-				board = new OrthoSquareBoard(bi.getxMax(), bi.getyMax());
+				board = new OrthoSquareBoard(gi.getxMax(), gi.getyMax());
 				currId = CoordinateID.ORTHOSQUARE;
 				break;
 			case HEX:
-				board = new HexBoard(bi.getxMax(), bi.getyMax());
+				board = new HexBoard(gi.getxMax(), gi.getyMax());
 				currId = CoordinateID.HEX;
 				break;
 		}
 		
-		if(bi.getCoordinateId() == null) return null; //If for any reason the creation doesn't work out, this will return null, something the game master should check for
-        initializeBoard(board, currId, bi.getLocationInitializers());
+		if(gi.getCoordinateType() == null) return null; //If for any reason the creation doesn't work out, this will return null, something the game master should check for
+        initializeBoard(board, currId, gi.getLocationInitializers());
         return board;
 	}
 	
+	//Universal for all boards, implemented using the StandardBoard interface which extends Board
 	private void initializeBoard(StandardBoard b, CoordinateID id, LocationInitializer... initializers)
 	{
 		for (LocationInitializer li : initializers) {
 			Coordinate c = null;
-			switch(id) {
+			switch(id) { //Need to know the kind of board to make the correct coordinate
 				case SQUARE:
 					c = SquareCoordinate.makeCoordinate(li.x, li.y);
 					break;

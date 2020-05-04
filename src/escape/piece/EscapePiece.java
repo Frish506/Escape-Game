@@ -24,23 +24,26 @@ public class EscapePiece
 {
     private final PieceName name;
     private final Player player;
+    private final MovementPatternID movementPattern;
     
     /**
      * Constructor that takes the player and piece name.
      * @param player
      * @param name
      */
+    
+    
     public EscapePiece(Player player, PieceName name) 
     {
-    	this.player = player;
+    	this.movementPattern = null;
+		this.player = player;
     	this.name = name;
     }
 	
 	/**
 	 * Static factory member. 
-	 * DO NOT CHANGE THE SIGNATURE.
 	 * @param player the player the piece belongs to
-	 * @param name the piee name
+	 * @param name the piece name
 	 * @return the piece
 	 */
 	public static EscapePiece makePiece(Player player, PieceName name)

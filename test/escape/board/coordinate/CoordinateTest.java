@@ -12,12 +12,15 @@
 
 package escape.board.coordinate;
 
+import static escape.board.coordinate.CoordinateID.HEX;
+import static escape.board.coordinate.CoordinateID.ORTHOSQUARE;
+import static escape.board.coordinate.CoordinateID.SQUARE;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -31,20 +34,76 @@ import escape.exception.EscapeException;
  */
 class CoordinateTest
 {
+    @ParameterizedTest
+    @MethodSource("distanceTestProvider")
+    void distanceTests(String n, Coordinate c1, Coordinate c2, int expected)
+    {
+        assertEquals(n, expected, c1.distanceTo(c2));
+    }
+   
+    static Stream<Arguments> distanceTestProvider()
+    {
+        return Stream.of(
+        	// Square coordinates
+            Arguments.of("#1", mc(SQUARE, 4, 4), mc(SQUARE, 5, 4), 1),
+            Arguments.of("#2", mc(SQUARE, 1, 1), mc(SQUARE, 3, 1), 2),
+            Arguments.of("#3", mc(SQUARE, 4, 4), mc(SQUARE, 3, 4), 1),
+            Arguments.of("#4", mc(SQUARE, 4, 4), mc(SQUARE, 4, 3), 1),
+            Arguments.of("#5", mc(SQUARE, 4, 4), mc(SQUARE, 4, 5), 1),
+            Arguments.of("#6", mc(SQUARE, 4, 4), mc(SQUARE, 5, 5), 1),
+            Arguments.of("#7", mc(SQUARE, 4, 4), mc(SQUARE, 5, 3), 1),
+            Arguments.of("#8", mc(SQUARE, 4, 4), mc(SQUARE, 3, 3), 1),
+            Arguments.of("#9", mc(SQUARE, 4, 4), mc(SQUARE, 3, 5), 1),
+            Arguments.of("#10", mc(SQUARE, 5, 4), mc(SQUARE, 25, 5), 20),
+            Arguments.of("#11", mc(SQUARE, 25, 5), mc(SQUARE, 5, 4), 20),
+            Arguments.of("#12", mc(SQUARE, 25, 5), mc(SQUARE, 25, 5), 0),
+            Arguments.of("#13", mc(SQUARE, 5, 4), mc(SQUARE, 25, 4), 20),
+            Arguments.of("#14", mc(SQUARE, 5, 4), mc(SQUARE, 1, 6), 4),
+            Arguments.of("#25", mc(SQUARE, -5, 4), mc(SQUARE, 4, -6), 10),
+            
+            // OrthoSquare coordinates
+            Arguments.of("#15", mc(ORTHOSQUARE, 4, 4), mc(ORTHOSQUARE, 5, 4), 1),
+            Arguments.of("#16", mc(ORTHOSQUARE, 6, 6), mc(ORTHOSQUARE, 4, 4), 4),
+            Arguments.of("#17", mc(ORTHOSQUARE, 6, 6), mc(ORTHOSQUARE, 8, 4), 4),
+            Arguments.of("#18", mc(ORTHOSQUARE, 6, 6), mc(ORTHOSQUARE, 4, 8), 4),
+            Arguments.of("#19", mc(ORTHOSQUARE, 6, 6), mc(ORTHOSQUARE, 8, 8), 4),
+            Arguments.of("#20", mc(ORTHOSQUARE, 6, 6), mc(ORTHOSQUARE, 6, 6), 0),
+            Arguments.of("#26", mc(ORTHOSQUARE, -6, 6), mc(ORTHOSQUARE, 6, -2), 20),
+            
+            // Hex coordinates
+            Arguments.of("#21", mc(HEX, 0, 0), mc(HEX, 0, 1), 1),
+            Arguments.of("#22", mc(HEX, -3, -1), mc(HEX, 1, 2), 7),
+            Arguments.of("#23", mc(HEX, -4, 5), mc(HEX, 4, -3), 8),
+            Arguments.of("#24", mc(HEX, -4, 5), mc(HEX, 4, -4), 9)
+        );
+    }
+    
+    /**
+     * Helper to make a coordinate
+     * @param type the type of coordinate
+     * @param x
+     * @param y
+     * @return the coordinate instance
+     */
+    private static Coordinate mc(CoordinateID type, int x, int y)
+    {
+        return type == SQUARE ? SquareCoordinate.makeCoordinate(x, y)
+        	: type == ORTHOSQUARE ? OrthoSquareCoordinate.makeCoordinate(x, y)
+        	: HexCoordinate.makeCoordinate(x, y);
+    }
+	
 	//Simple SquareCoordinate build
     @Test
     void buildSquareCoordinate() {
     	SquareCoordinate testSqCoord = SquareCoordinate.makeCoordinate(1, 1);
     	assertNotNull(testSqCoord);
     }
-    
-	//assertThrows(EscapeException.class, () -> {//Code that should throw errors}
-    
+        
     @ParameterizedTest
     @MethodSource("testBadSquareCoordinates")
     void testFalseSquareCoordBuild(int x, int y) throws EscapeException {
     	assertThrows(EscapeException.class, () -> {
-    		SquareCoordinate falseSqCoord = SquareCoordinate.makeCoordinate(x, y);
+    		SquareCoordinate.makeCoordinate(x, y);
     	});
     }
     
@@ -81,7 +140,8 @@ class CoordinateTest
     static Stream<Arguments> squareCoordDistances() {
     	return Stream.of(
     			Arguments.of(1, 1, 2, 2, 1),
-    			Arguments.of(1, 2, 3, 5, 3));
+    			Arguments.of(1, 2, 3, 5, 3),
+    			Arguments.of(5, 5, 7, 5, 2));
     }
     /*
      * Beginning of OrthoSquare tests
@@ -97,7 +157,7 @@ class CoordinateTest
     @MethodSource("testBadSquareCoordinates")
     void testFalseOrthoSquareCoordBuild(int x, int y) throws EscapeException {
     	assertThrows(EscapeException.class, () -> {
-    		OrthoSquareCoordinate falseSqCoord = OrthoSquareCoordinate.makeCoordinate(x, y);
+    		OrthoSquareCoordinate.makeCoordinate(x, y);
     	});
     }
    
@@ -124,7 +184,9 @@ class CoordinateTest
     static Stream<Arguments> OrthoSquareCoordDistances() {
     	return Stream.of(
     			Arguments.of(1, 1, 2, 2, 2),
-    			Arguments.of(1, 2, 3, 5, 5));
+    			Arguments.of(1, 2, 3, 5, 5),
+                Arguments.of(5, 5, 3, 4, 3),
+                Arguments.of(5, 5, 4, 3, 3));
     }
     
     /*
@@ -144,6 +206,8 @@ class CoordinateTest
     static Stream<Arguments> HexCoordDistances() {
     	return Stream.of(
     			Arguments.of(0, 0, -1, 2, 2),
-    			Arguments.of(-1, 2, 2, -2, 4));
+    			Arguments.of(-1, 2, 2, -2, 4),
+    			Arguments.of(0, 0, 2, -2, 2),
+    			Arguments.of(0, 0, -2, 2, 2));
     }
 }

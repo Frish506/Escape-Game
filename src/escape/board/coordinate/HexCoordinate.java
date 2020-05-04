@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import escape.exception.EscapeException;
 
-public class HexCoordinate implements Coordinate {
+public class HexCoordinate implements BetterCoordinate {
 	
 	private final int x;
 	private final int y;
@@ -57,5 +57,9 @@ public class HexCoordinate implements Coordinate {
 			    Math.abs(this.getX() + this.getY() - to.getX() - to.getY())) / 2;
 	}
 	
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")";
+	}
 
 }

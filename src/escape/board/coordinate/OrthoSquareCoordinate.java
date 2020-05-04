@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import escape.exception.EscapeException;
 
-public class OrthoSquareCoordinate implements Coordinate {
+public class OrthoSquareCoordinate implements BetterCoordinate {
 	
 	private final int x;
 	private final int y;
@@ -14,8 +14,8 @@ public class OrthoSquareCoordinate implements Coordinate {
 		this.y = y;
 	}
 	
-	public static OrthoSquareCoordinate makeCoordinate(int x, int y) throws EscapeException{
-    	if(x<1 || y<1) { throw new EscapeException("Square Coordinates must have x&y coordinates of 1 or above"); }
+	//Cannot make a square coordinate less than 1 because square boards don't have negative or 0 spaces
+	public static OrthoSquareCoordinate makeCoordinate(int x, int y) {
 		return new OrthoSquareCoordinate(x, y);
 	}
 	
@@ -54,5 +54,10 @@ public class OrthoSquareCoordinate implements Coordinate {
 		int absX = Math.abs(this.getX() - to.getX());
 		int absY = Math.abs(this.getY() - to.getY());
 		return absX + absY;
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")";
 	}
 }

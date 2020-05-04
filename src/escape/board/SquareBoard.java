@@ -12,6 +12,8 @@
 package escape.board;
 
 import java.util.*;
+
+import escape.board.coordinate.CoordinateID;
 import escape.board.coordinate.SquareCoordinate;
 import escape.exception.EscapeException;
 import escape.piece.EscapePiece;
@@ -29,8 +31,9 @@ public class SquareBoard implements StandardBoard<SquareCoordinate>
 	Map<SquareCoordinate, EscapePiece> pieces;
 	
 	private final int xMax, yMax;
-	public SquareBoard(int xMax, int yMax)
+	public SquareBoard(int xMax, int yMax) throws EscapeException
 	{
+		if(xMax < 1 || yMax < 1) { throw new EscapeException("Cannot make board with x or y smaller than 1"); }
 		this.xMax = xMax;
 		this.yMax = yMax;
 		pieces = new HashMap<SquareCoordinate, EscapePiece>();
@@ -41,18 +44,19 @@ public class SquareBoard implements StandardBoard<SquareCoordinate>
 	 * @see escape.board.Board#getPieceAt(escape.board.coordinate.Coordinate)
 	 */
 	@Override
-	public EscapePiece getPieceAt(SquareCoordinate coord) throws EscapeException
+	public EscapePiece getPieceAt(SquareCoordinate c) throws EscapeException
 	{
-		checkBounds(coord);
-		return pieces.get(coord);
+		checkBounds(c);
+		return pieces.get(c);
 	}
 
 
 	@Override
-	public void putPieceAt(EscapePiece p, SquareCoordinate coord) throws EscapeException
+	public void putPieceAt(EscapePiece p, SquareCoordinate c) throws EscapeException
 	{
-		checkBounds(coord);
-		pieces.put(coord, p);
+		if(checkBlocked(c)) throw new EscapeException("Cannot put piece at BLOCKED locaiton");
+		checkBounds(c);
+		pieces.put(c, p);
 	}
 	
 	public void setLocationType(SquareCoordinate c, LocationType lt) throws EscapeException
@@ -61,11 +65,36 @@ public class SquareBoard implements StandardBoard<SquareCoordinate>
 		squares.put(c, lt);
 	}
 	
-	public void checkBounds(SquareCoordinate coord) throws EscapeException {
-		int x = coord.getX();
-		int y = coord.getY();
+	public LocationType getLocationType(SquareCoordinate c) throws EscapeException
+	{
+		checkBounds(c);
+		return squares.get(c);
+	}
+	
+	public void checkBounds(SquareCoordinate c) throws EscapeException {
+		int x = c.getX();
+		int y = c.getY();
 		if(x < 1 || x > xMax || y < 1 || y > yMax) {
 			throw new EscapeException("Coordinate Input Is Out of Range");
 		}
+	}
+	
+	//Cannot place piece at a blocked location
+	public boolean checkBlocked(SquareCoordinate c) {
+		LocationType curr = getLocationType(c);
+		if(curr != null) {
+			if(getLocationType(c).equals(LocationType.BLOCK)) return true;
+		}
+		return false;
+	}
+
+	@Override
+	public CoordinateID getBoardType() {
+		return CoordinateID.SQUARE;
+	}
+
+	@Override
+	public SquareCoordinate makeProperCoordinate(int x, int y) throws EscapeException {
+		return SquareCoordinate.makeCoordinate(x, y);
 	}
 }

@@ -20,7 +20,7 @@ import escape.exception.EscapeException;
  * 
  * @version Mar 27, 2020
  */
-public class SquareCoordinate implements Coordinate {
+public class SquareCoordinate implements BetterCoordinate {
 	private final int x;
 	private final int y;
 
@@ -29,9 +29,9 @@ public class SquareCoordinate implements Coordinate {
 		this.y = y;
 	}
 
-	public static SquareCoordinate makeCoordinate(int x, int y) throws EscapeException
+	//Cannot make a square coordinate less than 1 because square boards don't have negative or 0 spaces
+	public static SquareCoordinate makeCoordinate(int x, int y)
     {
-    	if(x<1 || y<1) { throw new EscapeException("Square Coordinates must have x&y coordinates of 1 or above"); }
     	return new SquareCoordinate(x, y);
     }
 
