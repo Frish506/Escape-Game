@@ -24,11 +24,33 @@ public class HexBoard implements StandardBoard<HexCoordinate> {
 		pieces = new HashMap<HexCoordinate, EscapePiece>();
 		squares = new HashMap<HexCoordinate, LocationType>();
 		
+		initializeClears();
 	}
+	
+	public void initializeClears() {
+		if(xFinite && yFinite) {
+			for(int x=(xRange*-1); x<=xRange; x++) {
+				for(int y=(yRange*-1); y<=yRange; y++) {
+					HexCoordinate clearCoord = HexCoordinate.makeCoordinate(x, y);
+					squares.put(clearCoord, LocationType.CLEAR);
+				}
+			}
+		}
+	}
+	
+	public void setSpaceAsClear(HexCoordinate c) {
+
+			if(squares.get(c) == null) {
+				squares.put(c, LocationType.CLEAR);
+			}
+		
+	}
+	
 	@Override
 	public EscapePiece getPieceAt(HexCoordinate c) throws EscapeException
 	{
 		checkBounds(c);
+		setSpaceAsClear(c);
 		return pieces.get(c);
 	}
 
@@ -38,6 +60,7 @@ public class HexBoard implements StandardBoard<HexCoordinate> {
 	{
 		if(checkBlocked(c)) throw new EscapeException("Cannot put piece at BLOCKED locaiton");
 		checkBounds(c);
+		setSpaceAsClear(c);
 		pieces.put(c, p);
 	}
 	
@@ -50,6 +73,7 @@ public class HexBoard implements StandardBoard<HexCoordinate> {
 	public LocationType getLocationType(HexCoordinate c) throws EscapeException
 	{
 		checkBounds(c);
+		setSpaceAsClear(c);
 		return squares.get(c);
 	}
 	
@@ -80,6 +104,12 @@ public class HexBoard implements StandardBoard<HexCoordinate> {
 	@Override
 	public HexCoordinate makeProperCoordinate(int x, int y) throws EscapeException {
 		return HexCoordinate.makeCoordinate(x, y);
+	}
+
+	@Override
+	public void removePiece(HexCoordinate c) throws EscapeException {
+		checkBounds(c);
+		pieces.remove(c);
 	}
 
 }

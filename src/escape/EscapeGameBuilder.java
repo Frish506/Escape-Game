@@ -16,9 +16,6 @@ import java.io.*;
 import javax.xml.bind.*;
 
 import escape.board.BoardBuilder;
-import escape.board.HexBoard;
-import escape.board.OrthoSquareBoard;
-import escape.board.SquareBoard;
 import escape.board.StandardBoard;
 import escape.board.coordinate.CoordinateID;
 import escape.exception.EscapeException;
@@ -64,15 +61,7 @@ public class EscapeGameBuilder
         BoardBuilder boardMaker = new BoardBuilder(gameInitializer);
         StandardBoard theBoard = boardMaker.makeBoard();
         checkPieceTypes(theBoard, gameInitializer.getPieceTypes());
-		switch(gameInitializer.getCoordinateType()) { //Check what kind of board it is, then make that board
-			case SQUARE:
-				return new SquareGameManager((SquareBoard) theBoard, gameInitializer.getPieceTypes());
-			/*case ORTHOSQUARE: 
-				return new OrthoSquareGameManager((OrthoSquareBoard) theBoard);
-			case HEX:
-				return new HexGameManager((HexBoard) theBoard);*/
-		}
-		return null;
+        return new GameManager(theBoard, gameInitializer.getPieceTypes());
     }
     
     public void checkPieceTypes(StandardBoard theBoard, PieceTypeInitializer[] types) throws EscapeException {
@@ -80,13 +69,14 @@ public class EscapeGameBuilder
     		//Check if it at least has FLY or DISTANCE
     		boolean flyOrDist = false;
     		for(PieceAttribute pa : pti.getAttributes()) {
-    			if(pa.getId().equals(PieceAttributeID.DISTANCE) || pa.getId().equals(PieceAttributeID.FLY)) { 
+    			if(pa.getId().equals(PieceAttributeID.DISTANCE) || pa.getId().equals(PieceAttributeID.FLY)) {
+    				if(pa.getIntValue() < 1) throw new EscapeException("Gotta have a good int value for movement bruh");
     				if(flyOrDist) throw new EscapeException("Can't have multiple movement attributes");
     				flyOrDist = true;
     			}
+    			
     		}
     		if(!flyOrDist) throw new EscapeException("Bruh each piece needs to have either a fly or distance attribute you FOOL");
-    		MovementPatternID movementType = pti.getMovementPattern();
     		CoordinateID boardType = theBoard.getBoardType();
     		switch(pti.getMovementPattern()) { //Check if the piece cannot be on the board
 				case DIAGONAL:

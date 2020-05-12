@@ -4,4 +4,5 @@ public interface BetterCoordinate extends Coordinate { //I need that good getX a
     int getX();
     
     int getY();
+    
 }

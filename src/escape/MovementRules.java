@@ -2,8 +2,6 @@ package escape;
 
 import java.util.ArrayList;
 
-import javax.xml.soap.Node;
-
 import escape.board.LocationType;
 import escape.board.StandardBoard;
 import escape.board.coordinate.BetterCoordinate;
@@ -16,9 +14,10 @@ import escape.piece.PieceAttributeID;
 import escape.util.PieceTypeInitializer;
 import escape.util.PieceTypeInitializer.PieceAttribute;
 
+@SuppressWarnings("unchecked")
 public class MovementRules {
 	
-	public PieceAttribute getMovementAttribute(PieceTypeInitializer pti) { //This returns the PieceAttribute of either Distance or Fly //TODO Move this method?
+	public static PieceAttribute getMovementAttribute(PieceTypeInitializer pti) { //This returns the PieceAttribute of either Distance or Fly //TODO Move this method?
 		for(PieceAttribute pa: pti.getAttributes()) {
 			PieceAttributeID thisPaId = pa.getId();
 			if(thisPaId.equals(PieceAttributeID.DISTANCE) || (thisPaId.equals(PieceAttributeID.FLY))) {
@@ -28,7 +27,7 @@ public class MovementRules {
 		return null;
 	}
 	
-	public PieceAttribute getUnblockAttribute(PieceTypeInitializer pti) {
+	public static PieceAttribute getUnblockAttribute(PieceTypeInitializer pti) {
 		for(PieceAttribute pa: pti.getAttributes()) {
 			PieceAttributeID thisPaId = pa.getId();
 			if(thisPaId.equals(PieceAttributeID.UNBLOCK)) {
@@ -37,7 +36,7 @@ public class MovementRules {
 		}
 		return null;
 	}
-	public PieceAttribute getJumpAttribute(PieceTypeInitializer pti) {
+	public static PieceAttribute getJumpAttribute(PieceTypeInitializer pti) {
 		for(PieceAttribute pa: pti.getAttributes()) {
 			PieceAttributeID thisPaId = pa.getId();
 			if(thisPaId.equals(PieceAttributeID.JUMP)) {
@@ -47,16 +46,17 @@ public class MovementRules {
 		return null;
 	}
 
-	public boolean initialCheck(StandardBoard theBoard, Coordinate from, Coordinate to) {
+	public static boolean initialCheck(StandardBoard theBoard, Coordinate from, Coordinate to) {
 		EscapePiece startingPiece = theBoard.getPieceAt(from);
 		if(startingPiece == null) return false; //If there's no piece at the starting location
-		if(theBoard.getLocationType(to).equals(LocationType.BLOCK)) return false; //Can't end on blocked location
+		LocationType potentialBlock = theBoard.getLocationType(to);
+		if(potentialBlock.equals(LocationType.BLOCK)) return false; //Can't end on blocked location
 		EscapePiece potentialEndPiece = theBoard.getPieceAt(to);
 		if(potentialEndPiece != null && potentialEndPiece.getPlayer().equals(startingPiece.getPlayer())) return false; //Can't end on a piece of the same type
 		return true;
 	}
 	
-	public boolean basicDistanceCheck(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) { //Check if the basic distance isn't too far
+	public static boolean basicDistanceCheck(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) { //Check if the basic distance isn't too far
 		PieceAttribute movementAttribute = getMovementAttribute(pti);
 		int movementAmt = movementAttribute.getIntValue();
 		
@@ -69,9 +69,8 @@ public class MovementRules {
 		return true;
 	}
 	
-	public boolean checkFly(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) { //If it can fly and isnt' linear, we've already checked distance, so yeah it can go
+	public static boolean checkFly(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) { //If it can fly and isnt' linear, we've already checked distance, so yeah it can go
 		PieceAttribute movementAttribute = getMovementAttribute(pti);
-		int movementAmt = movementAttribute.getIntValue();
 		if(movementAttribute.getId().equals(PieceAttributeID.FLY) && !(pti.getMovementPattern().equals(MovementPatternID.LINEAR))) return true;
 		return false;
 	}
@@ -90,23 +89,25 @@ public class MovementRules {
 		}
 	}
 	
-	public ArrayList<Node> findDiagonalNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock) {
+	public static ArrayList<Node> findDiagonalNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock, BetterCoordinate dest) {
 		ArrayList<Node> returner = new ArrayList<Node>();
 		for(int x = -1; x<=1; x+=2) {
 			for(int y=-1; y<=1; y+=2) {
 				boolean inBounds = false;
+				Coordinate c = theBoard.makeProperCoordinate(home.x + x, home.y + y);
 				try { //Check if the coordinates are in bounds. Works for all 3 kinds of board
-					theBoard.makeProperCoordinate(home.x + x, home.y + y); 
+					theBoard.checkBounds(c);
 					inBounds = true;
 				}
 				catch (Exception EscapeException) {}
 				if(inBounds) { //If it's in bounds
-					LocationType potentialUnpassable = theBoard.getLocationType(theBoard.makeProperCoordinate(home.x + x, home.y + y));
+					LocationType potentialUnpassable = theBoard.getLocationType(c);
+					boolean reached = (dest.getX() == home.x + x && dest.getY() == home.y + y);
 					if(potentialUnpassable.equals(LocationType.BLOCK) && !canUnblock) {} //If it can't pass through the unblock
-					else if(potentialUnpassable.equals(LocationType.EXIT)) {} //Can't pass through an exit space
+					else if(potentialUnpassable.equals(LocationType.EXIT) && !reached) {} //Can't pass through an exit space
 					else { //If either you can pass through the block, or there's just not a block there
-						EscapePiece potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x, home.y + y)); //Get the theoretical piece
-						if(potentialPiece != null && canJump) { //If there's a piece there and you can jump, check the following diagonal after the piece
+						EscapePiece potentialPiece = theBoard.getPieceAt(c); //Get the theoretical piece
+						if(potentialPiece != null && canJump && !reached) { //If there's a piece there and you can jump, check the following diagonal after the piece
 							try {
 								potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x + x, home.y + y + y)); //get next diagonal after the theoretical jump
 								if(potentialPiece == null) { //There's not two pieces in a row, so add the spot
@@ -116,8 +117,9 @@ public class MovementRules {
 							}
 							catch (Exception EscapeException) {}
 						}
-						else if (potentialPiece == null) { //Otherwise, if there's not a piece there just get the spot. No need to test if there is a piece there but you can't jump b/c you would just break
-							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y);
+						else if (potentialPiece == null || reached) { //Otherwise, if there's not a piece there just get the spot. Or if it's the destination add that bish. No need to test if there is a piece there but you can't jump b/c you would just break
+							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y); //Already tested if piece at destination is of same kind, so since we know it's not and we are at the dest, even though a piece is there we are good
+							returner.add(corner);
 						}
 					}
 				}
@@ -126,23 +128,25 @@ public class MovementRules {
 		return returner;
 	}
 	
-	public ArrayList<Node> findOrthogNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock) {
+	public static ArrayList<Node> findOrthogNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock, BetterCoordinate dest) {
 		ArrayList<Node> returner = new ArrayList<Node>();
 		for(int x = -1; x<=1; x++) {
 			for(int y=-1; y<=1; y++) {
 				boolean inBounds = false;
+				Coordinate c = theBoard.makeProperCoordinate(home.x + x, home.y + y);
 				try { //Check if the coordinates are in bounds. Works for all 3 kinds of board
-					theBoard.makeProperCoordinate(home.x + x, home.y + y); 
+					theBoard.checkBounds(c);
 					inBounds = true;
 				}
 				catch (Exception EscapeException) {}
 				if(inBounds && (x==0 ^ y==0)) { //If it's in bounds, and either x or y is 0 but not both (because that's just the original spot)
-					LocationType potentialUnpassable = theBoard.getLocationType(theBoard.makeProperCoordinate(home.x + x, home.y + y));
+					LocationType potentialUnpassable = theBoard.getLocationType(c);
+					boolean reached = (dest.getX() == home.x + x && dest.getY() == home.y + y);
 					if(potentialUnpassable.equals(LocationType.BLOCK) && !canUnblock) {} //If it can't pass through the unblock
-					else if(potentialUnpassable.equals(LocationType.EXIT)) {} //Can't pass through an exit space
+					else if(potentialUnpassable.equals(LocationType.EXIT) && !reached) {} //Can't pass through an exit space
 					else { //If either you can pass through the block, or there's just not a block there
-						EscapePiece potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x, home.y + y)); //Get the theoretical piece
-						if(potentialPiece != null && canJump) { //If there's a piece there and you can jump, check the following diagonal after the piece
+						EscapePiece potentialPiece = theBoard.getPieceAt(c); //Get the theoretical piece
+						if(potentialPiece != null && canJump && !reached) { //If there's a piece there and you can jump, check the following diagonal after the piece
 							try {
 								potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x + x, home.y + y + y)); //get next diagonal after the theoretical jump
 								if(potentialPiece == null) { //There's not two pieces in a row, so add the spot
@@ -152,8 +156,9 @@ public class MovementRules {
 							}
 							catch (Exception EscapeException) {}
 						}
-						else if (potentialPiece == null) { //Otherwise, if there's not a piece there just get the spot. No need to test if there is a piece there but you can't jump b/c you would just break
-							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y);
+						else if (potentialPiece == null || reached) { //Otherwise, if there's not a piece there just get the spot. Or if it's the destination add that bish. No need to test if there is a piece there but you can't jump b/c you would just break
+							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y); //Already tested if piece at destination is of same kind, so since we know it's not and we are at the dest, even though a piece is there we are good
+							returner.add(corner);
 						}
 					}
 				}
@@ -162,23 +167,25 @@ public class MovementRules {
 		return returner;
 	}
 	
-	public ArrayList<Node> findOmniNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock) { //Also works for hex
+	public static ArrayList<Node> findOmniNeighbors(Node home, StandardBoard theBoard, boolean canJump, boolean canUnblock, BetterCoordinate dest) { //Also works for hex
 		ArrayList<Node> returner = new ArrayList<Node>();
 		for(int x = -1; x<=1; x++) {
 			for(int y=-1; y<=1; y++) {
 				boolean inBounds = false;
+				Coordinate c = theBoard.makeProperCoordinate(home.x + x, home.y + y);
 				try { //Check if the coordinates are in bounds. Works for all 3 kinds of board
-					theBoard.makeProperCoordinate(home.x + x, home.y + y); 
+					theBoard.checkBounds(c);
 					inBounds = true;
 				}
 				catch (Exception EscapeException) {}
 				if(inBounds && (x!=0 || y!=0) && !(theBoard.getBoardType().equals(CoordinateID.HEX) && x==y)) { //If it's in bounds, and both x and y don't equal zero, and x and y aren't equal if it's a hex board
-					LocationType potentialUnpassable = theBoard.getLocationType(theBoard.makeProperCoordinate(home.x + x, home.y + y));
+					LocationType potentialUnpassable = theBoard.getLocationType(c);
+					boolean reached = (dest.getX() == home.x + x && dest.getY() == home.y + y);
 					if(potentialUnpassable.equals(LocationType.BLOCK) && !canUnblock) {} //If it can't pass through the unblock
-					else if(potentialUnpassable.equals(LocationType.EXIT)) {} //Can't pass through an exit space
+					else if(potentialUnpassable.equals(LocationType.EXIT) && !reached) {} //Can't pass through an exit space
 					else { //If either you can pass through the block, or there's just not a block there
-						EscapePiece potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x, home.y + y)); //Get the theoretical piece
-						if(potentialPiece != null && canJump) { //If there's a piece there and you can jump, check the following diagonal after the piece
+						EscapePiece potentialPiece = theBoard.getPieceAt(c); //Get the theoretical piece
+						if(potentialPiece != null && canJump && !reached) { //If there's a piece there and you can jump and it's not the destination, check the following diagonal after the piece
 							try {
 								potentialPiece = theBoard.getPieceAt(theBoard.makeProperCoordinate(home.x + x + x, home.y + y + y)); //get next diagonal after the theoretical jump
 								if(potentialPiece == null) { //There's not two pieces in a row, so add the spot
@@ -188,8 +195,9 @@ public class MovementRules {
 							}
 							catch (Exception EscapeException) {}
 						}
-						else if (potentialPiece == null) { //Otherwise, if there's not a piece there just get the spot. No need to test if there is a piece there but you can't jump b/c you would just break
-							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y);
+						else if (potentialPiece == null || reached) { //Otherwise, if there's not a piece there just get the spot. Or if it's the destination add that bish. No need to test if there is a piece there but you can't jump b/c you would just break
+							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y); //Already tested if piece at destination is of same kind, so since we know it's not and we are at the dest, even though a piece is there we are good
+							returner.add(corner);
 						}
 					}
 				}
@@ -198,7 +206,7 @@ public class MovementRules {
 		return returner;
 	}
 	
-	public boolean checkLinearMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) {
+	public static boolean checkLinearMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) {
 		//Check if on the path
 		int xDif = Math.abs(to.getX() - from.getX());
 		int yDif = Math.abs(to.getY() - from.getY());
@@ -213,7 +221,6 @@ public class MovementRules {
 		
 		//Now we know it's on the path- let's grab the piece's movement structure
 		PieceAttribute movementAttribute = getMovementAttribute(pti);
-		MovementPatternID movementPattern = pti.getMovementPattern();
 		PieceAttributeID movementID = movementAttribute.getId();
 		
 		//Check if can fly
@@ -242,7 +249,7 @@ public class MovementRules {
 		boolean justJumped = false; //Can't jump twice in a row
 		
 		
-		while(nextX != to.getX() && nextY != to.getY()) { //Go toward dest- check if need to jump or there's a blocked spot
+		while(nextX != to.getX() || nextY != to.getY()) { //Go toward dest- check if need to jump or there's a blocked spot
 			
 			if(theBoard.getPieceAt(theBoard.makeProperCoordinate(nextX, nextY)) != null) { //If there's a piece in the way, check if it can jump. If it's jumping twice in a row that's a no go
 				if(!canJump) return false;
@@ -267,10 +274,11 @@ public class MovementRules {
 	}
 
 	
-	public boolean checkMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to, MovementPatternID moveStyle) {
+	public static boolean checkNonLinearMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) {
 		//Grab the attributes
 		PieceAttribute movementAttribute = getMovementAttribute(pti);
 		int movementAmt = movementAttribute.getIntValue();
+		MovementPatternID moveStyle = pti.getMovementPattern();
 		
 		boolean canJump = false, canUnblock = false;
 		if(getJumpAttribute(pti) != null) {
@@ -280,19 +288,20 @@ public class MovementRules {
 		if(getUnblockAttribute(pti) != null) {
 			canUnblock = getUnblockAttribute(pti).isBooleanValue();
 		}
-		Node start = new Node(null, 0, from.getX(), to.getY());
+		Node start = new Node(null, 0, from.getX(), from.getY());
 		ArrayList<Node> neighbors = new ArrayList<Node>();
 		neighbors.add(start);
-		for(Node n : neighbors) {
+		while(neighbors.size() > 0) {
+			Node n = neighbors.get(0);
 			ArrayList<Node> newNeighbors = null;
 			switch(moveStyle) {
-			case DIAGONAL: newNeighbors = findDiagonalNeighbors(n, theBoard, canJump, canUnblock); //Grab the next neighbors
+			case DIAGONAL: newNeighbors = findDiagonalNeighbors(n, theBoard, canJump, canUnblock, to); //Grab the next neighbors
 				break;
-			case OMNI: newNeighbors = findOmniNeighbors(n, theBoard, canJump, canUnblock); //Grab the next neighbors
+			case OMNI: newNeighbors = findOmniNeighbors(n, theBoard, canJump, canUnblock, to); //Grab the next neighbors
 				break;
-			case ORTHOGONAL: newNeighbors = findOrthogNeighbors(n, theBoard, canJump, canUnblock); //Grab the next neighbors
+			case ORTHOGONAL: newNeighbors = findOrthogNeighbors(n, theBoard, canJump, canUnblock, to); //Grab the next neighbors
 				break;
-			case LINEAR: return false;
+			case LINEAR: return false; //Should've never gotten here
 			}
 			for(Node k : newNeighbors) { //Sort through the new neighbors
 				if(k.dist <= movementAmt) { //Check if this neighbor isn't too far away to reach
@@ -300,9 +309,19 @@ public class MovementRules {
 					neighbors.add(k); //Add to the END of neighbors this node. BFS because go over each node, check the neighbors, put them at the end of the list. Would be DFS if we put the nodes right after the one we are looking at. Instead we put them at the end of the arraylist
 				}
 			}
-			
+			neighbors.remove(0);
 		}
 		return false;
+	}
+	
+	public static boolean checkMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) {
+		switch(pti.getMovementPattern()) {
+		case LINEAR:
+			return checkLinearMovement(pti, theBoard, from, to);
+		default:
+			return checkNonLinearMovement(pti, theBoard, from, to);
+		
+		}
 	}
 	
 	

@@ -78,25 +78,27 @@ public class BoardBuilder
 	//Universal for all boards, implemented using the StandardBoard interface which extends Board
 	private void initializeBoard(StandardBoard b, CoordinateID id, LocationInitializer... initializers)
 	{
-		for (LocationInitializer li : initializers) {
-			Coordinate c = null;
-			switch(id) { //Need to know the kind of board to make the correct coordinate
-				case SQUARE:
-					c = SquareCoordinate.makeCoordinate(li.x, li.y);
-					break;
-				case ORTHOSQUARE:
-					c = OrthoSquareCoordinate.makeCoordinate(li.x, li.y);
-					break;
-				case HEX:
-					c = HexCoordinate.makeCoordinate(li.x, li.y);
-					break;
-			}
-			if (li.pieceName != null) {
-				b.putPieceAt(new EscapePiece(li.player, li.pieceName), c);
-			}
-			
-			if (li.locationType != null && li.locationType != CLEAR) {
-				b.setLocationType(c, li.locationType);
+		if(initializers != null) {
+			for (LocationInitializer li : initializers) {
+				Coordinate c = null;
+				switch(id) { //Need to know the kind of board to make the correct coordinate
+					case SQUARE:
+						c = SquareCoordinate.makeCoordinate(li.x, li.y);
+						break;
+					case ORTHOSQUARE:
+						c = OrthoSquareCoordinate.makeCoordinate(li.x, li.y);
+						break;
+					case HEX:
+						c = HexCoordinate.makeCoordinate(li.x, li.y);
+						break;
+				}
+				if (li.pieceName != null) {
+					b.putPieceAt(new EscapePiece(li.player, li.pieceName), c);
+				}
+				
+				if (li.locationType != null && li.locationType != CLEAR) {
+					b.setLocationType(c, li.locationType);
+				}
 			}
 		}
 	}

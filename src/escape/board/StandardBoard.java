@@ -2,6 +2,7 @@ package escape.board;
 
 import escape.board.coordinate.Coordinate;
 import escape.board.coordinate.CoordinateID;
+import escape.exception.EscapeException;
 
 /**
  * 
@@ -17,6 +18,10 @@ public interface StandardBoard<C extends Coordinate> extends Board<C> {
 	public LocationType getLocationType(C coord);
 	
 	public C makeProperCoordinate(int x, int y);
+	
+	public void checkBounds(C c) throws EscapeException;
+	
+	public void removePiece(C c) throws EscapeException;
 	
 	public CoordinateID getBoardType();
 }

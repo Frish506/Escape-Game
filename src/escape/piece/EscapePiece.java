@@ -24,7 +24,6 @@ public class EscapePiece
 {
     private final PieceName name;
     private final Player player;
-    private final MovementPatternID movementPattern;
     
     /**
      * Constructor that takes the player and piece name.
@@ -35,7 +34,6 @@ public class EscapePiece
     
     public EscapePiece(Player player, PieceName name) 
     {
-    	this.movementPattern = null;
 		this.player = player;
     	this.name = name;
     }

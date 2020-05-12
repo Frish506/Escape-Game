@@ -41,6 +41,7 @@ class BoardTest
 		BoardBuilder bb = new BoardBuilder(new File("config/board/SquareBoardConfig1.xml"));
 		SquareBoard theBoard = (SquareBoard) bb.makeBoard();
 		assertNotNull(theBoard);
+		
 	}
 
 	@ParameterizedTest

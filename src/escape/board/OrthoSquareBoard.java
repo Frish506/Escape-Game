@@ -21,6 +21,16 @@ public class OrthoSquareBoard implements StandardBoard<OrthoSquareCoordinate> {
 		this.yMax = yMax;
 		pieces = new HashMap<OrthoSquareCoordinate, EscapePiece>();
 		squares = new HashMap<OrthoSquareCoordinate, LocationType>();
+		initializeClears();
+	}
+	
+	public void initializeClears() {
+		for(int x=0; x<=xMax; x++) {
+			for(int y=0; y<=yMax; y++) {
+				OrthoSquareCoordinate clearCoord = OrthoSquareCoordinate.makeCoordinate(x, y);
+				squares.put(clearCoord, LocationType.CLEAR);
+			}
+		}
 	}
 	
 	/*
@@ -79,5 +89,11 @@ public class OrthoSquareBoard implements StandardBoard<OrthoSquareCoordinate> {
 	@Override
 	public OrthoSquareCoordinate makeProperCoordinate(int x, int y) throws EscapeException{
 		return OrthoSquareCoordinate.makeCoordinate(x, y);
+	}
+
+	@Override
+	public void removePiece(OrthoSquareCoordinate c) throws EscapeException {
+		checkBounds(c);
+		pieces.remove(c);
 	}
 }

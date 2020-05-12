@@ -20,6 +20,7 @@ Piece Creation
 1. Has at least DISTANCE or FLY. Can't have both. Throw exception if neither or both.
 2. Must have a MOVEMENT type.
 3. Cannot be placed on the wrong type of board
+4. Cannot have multiple pieces of the same type in a GameManager
 
 Movement Checks
 1. Check if there's a piece at starting location
@@ -29,4 +30,14 @@ Movement Checks
 5. Check if BLOCKED space or opponent piece is in the way - for these check UNBLOCK and JUMP booleans respectively
 	5.1. If cannot get through a space, either because cannot UNBLOCK, cannot JUMP, or two pieces in a row in the way, if LINEAR return false
 	5.2. If not LINEAR, try rerouting
-6. If landing on piece of same color, and is true, remove the piece???
+6. If landing on piece of same color, and is true, remove the piece
+
+General Movement Tests
+1. Linear of all 3. Can't go too far, can't go in any direction but one
+2. Movement- too far? No. Blocked off area? No.
+3. Flying- does it just ignore everything? Good
+4. Can everything find their destination, if possible, regardless of board type, board size, or movement type
+
+Error Tests
+1. On attributes, boolean is on an int attribute such as fly or distance, or vice versa
+2. All attributes have an int or boolean

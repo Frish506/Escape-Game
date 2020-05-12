@@ -38,6 +38,16 @@ public class SquareBoard implements StandardBoard<SquareCoordinate>
 		this.yMax = yMax;
 		pieces = new HashMap<SquareCoordinate, EscapePiece>();
 		squares = new HashMap<SquareCoordinate, LocationType>();
+		initializeClears();
+	}
+	
+	public void initializeClears() {
+		for(int x=0; x<=xMax; x++) {
+			for(int y=0; y<=yMax; y++) {
+				SquareCoordinate clearCoord = SquareCoordinate.makeCoordinate(x, y);
+				squares.put(clearCoord, LocationType.CLEAR);
+			}
+		}
 	}
 	
 	/*
@@ -96,5 +106,11 @@ public class SquareBoard implements StandardBoard<SquareCoordinate>
 	@Override
 	public SquareCoordinate makeProperCoordinate(int x, int y) throws EscapeException {
 		return SquareCoordinate.makeCoordinate(x, y);
+	}
+
+	@Override
+	public void removePiece(SquareCoordinate c) throws EscapeException {
+		checkBounds(c);
+		pieces.remove(c);	
 	}
 }
