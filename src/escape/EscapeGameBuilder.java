@@ -61,7 +61,7 @@ public class EscapeGameBuilder
         BoardBuilder boardMaker = new BoardBuilder(gameInitializer);
         StandardBoard theBoard = boardMaker.makeBoard();
         checkPieceTypes(theBoard, gameInitializer.getPieceTypes());
-        return new GameManager(theBoard, gameInitializer.getPieceTypes());
+        return new GameManager(theBoard, gameInitializer.getPieceTypes(), gameInitializer.getRules());
     }
     
     public void checkPieceTypes(StandardBoard theBoard, PieceTypeInitializer[] types) throws EscapeException {

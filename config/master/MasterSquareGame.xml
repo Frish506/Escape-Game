@@ -100,7 +100,10 @@
     		<id>DISTANCE</id>
     		<attrType>INTEGER</attrType>
     		<intValue>3</intValue>
-    	</attributes>
+    	</attributes><attributes>
+    		<id>VALUE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>5</intValue></attributes>
     </pieceTypes>
     
      <pieceTypes>
@@ -151,5 +154,8 @@
     		<attrType>BOOLEAN</attrType>
     		<booleanValue>true</booleanValue>
     	</attributes>
+    	
     </pieceTypes>
-</escapeGameInitializer>
+    <rules>
+    	<id>REMOVE</id>
+    	<intValue></intValue></rules></escapeGameInitializer>

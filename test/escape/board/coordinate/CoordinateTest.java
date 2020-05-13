@@ -98,23 +98,6 @@ class CoordinateTest
     	SquareCoordinate testSqCoord = SquareCoordinate.makeCoordinate(1, 1);
     	assertNotNull(testSqCoord);
     }
-        
-    @ParameterizedTest
-    @MethodSource("testBadSquareCoordinates")
-    void testFalseSquareCoordBuild(int x, int y) throws EscapeException {
-    	assertThrows(EscapeException.class, () -> {
-    		SquareCoordinate.makeCoordinate(x, y);
-    	});
-    }
-    
-    static Stream<Arguments> testBadSquareCoordinates() {
-    	return Stream.of(
-    			Arguments.of(0, 1),
-    			Arguments.of(1,0),
-    			Arguments.of(-1, 1),
-    			Arguments.of(1, -1),
-    			Arguments.of(0, 0));
-    }
     
     @Test
     void testSquareCoordinateEquals() {
@@ -152,15 +135,6 @@ class CoordinateTest
     	assertNotNull(testOrthoSquareCoord);
     }
     
-    //Test what the 
-    @ParameterizedTest
-    @MethodSource("testBadSquareCoordinates")
-    void testFalseOrthoSquareCoordBuild(int x, int y) throws EscapeException {
-    	assertThrows(EscapeException.class, () -> {
-    		OrthoSquareCoordinate.makeCoordinate(x, y);
-    	});
-    }
-   
     
     @Test
     void testOrthoSquareCoordinateEquals() {

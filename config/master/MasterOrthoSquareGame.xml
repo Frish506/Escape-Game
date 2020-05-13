@@ -152,4 +152,6 @@
     		<booleanValue>true</booleanValue>
     	</attributes>
     </pieceTypes>
-</escapeGameInitializer>
+    <rules>
+    	<id>REMOVE</id>
+    	<intValue></intValue></rules></escapeGameInitializer>

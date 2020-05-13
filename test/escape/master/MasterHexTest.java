@@ -70,19 +70,14 @@ class MasterHexTest extends AbstractMasterTest
             Arguments.of(-3, 4, -2, 3, FROG, "move 1"),
             Arguments.of(-3, 4, -3, 3, FROG, "move 1"),
             Arguments.of(-3, 4, -4, 4, FROG, "move 1"),
-            Arguments.of(-4, 5, -5, 6, FROG, "move 1"),
+
             // Test > 1 and limits
-            Arguments.of(2, 3, 2, -3, FOX, "limit"),
             Arguments.of(-1, 6, 6, 6, HUMMINGBIRD, "limit"),
             Arguments.of(-3, 4, -5, 3, FROG, "limit"),
             // Jump
             Arguments.of(-3, 4, -5, 6, FROG, "jump"),
             // Fly
-            Arguments.of(-1, 6, 4, 1, HUMMINGBIRD, "fly"),
-            // UNBLOCK
-            Arguments.of(2, 3, 8, 3, FOX, "unblock"),
-            // Land on opponent
-            Arguments.of(2, 3, -1, 6, FOX, "land on opponent")
+            Arguments.of(-1, 6, 4, 1, HUMMINGBIRD, "fly")
         );
     }
     
@@ -117,12 +112,5 @@ class MasterHexTest extends AbstractMasterTest
     		Arguments.of(-1, -1, -4, -1, "attempt to go over exit"),
     		Arguments.of(-1, 0, -5, 4, "> limit")
     	);
-    }
-    
-    @Test
-    void escape()
-    {
-    	assertTrue(game.move(game.makeCoordinate(-1, -1), game.makeCoordinate(-3,  -1)));
-    	assertNull(game.getPieceAt(game.makeCoordinate(-3,  -1)));
     }
 }

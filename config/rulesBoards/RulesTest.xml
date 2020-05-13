@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<escapeGameInitializer>
+	<coordinateType>SQUARE</coordinateType>
+    <!-- Board items -->
+    <xMax>24</xMax>
+    <yMax>18</yMax>
+    
+    <!-- Pieces -->
+    <locationInitializers>
+        <x>5</x><y>7</y>
+        <player>PLAYER1</player><pieceName>FOX</pieceName>
+    </locationInitializers><locationInitializers>
+        <x>8</x><y>7</y>
+        <player>PLAYER2</player><pieceName>FOX</pieceName>
+    </locationInitializers><locationInitializers>
+        <x>5</x><y>6</y>
+        <player>PLAYER1</player><pieceName>FROG</pieceName>
+    </locationInitializers>
+    <locationInitializers>
+        <x>8</x><y>6</y>
+        <player>PLAYER2</player><pieceName>HORSE</pieceName>
+    </locationInitializers>
+    <locationInitializers>
+        <x>5</x><y>5</y>
+        <player>PLAYER1</player><pieceName>HUMMINGBIRD</pieceName>
+    </locationInitializers>
+    <locationInitializers>
+        <x>8</x><y>5</y>
+        <player>PLAYER2</player><pieceName>FOX</pieceName>
+    </locationInitializers>
+        
+        
+    
+    <!-- Exits -->
+    <locationInitializers>
+    	<x>6</x><y>9</y><locationType>EXIT</locationType>
+    </locationInitializers>
+    
+    
+    <!-- Piece items, an array of pieceTypes, 1 or more -->
+    <pieceTypes>
+        <pieceName>FROG</pieceName>
+        <movementPattern>ORTHOGONAL</movementPattern>
+        <attributes>
+            <id>JUMP</id>
+            <attrType>BOOLEAN</attrType>
+            <booleanValue>true</booleanValue>
+        </attributes>
+    	<attributes>
+    		<id>DISTANCE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>30</intValue>
+    	</attributes><attributes>
+    		<id>VALUE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>5</intValue></attributes>
+    </pieceTypes>
+    
+     <pieceTypes>
+        <pieceName>HORSE</pieceName>
+        <movementPattern>OMNI</movementPattern>
+        <attributes>
+            <id>JUMP</id>
+            <attrType>BOOLEAN</attrType>
+            <booleanValue>true</booleanValue>
+        </attributes>
+    	<attributes>
+    		<id>DISTANCE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>30</intValue>
+    	</attributes>
+    	<attributes>
+    		<id>VALUE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>4</intValue>
+    	</attributes>
+    </pieceTypes>
+    
+    <pieceTypes>
+        <pieceName>HUMMINGBIRD</pieceName>
+        <movementPattern>OMNI</movementPattern>
+        <attributes>
+            <id>FLY</id>
+            <attrType>INTEGER</attrType>
+            <intValue>30</intValue>
+    	</attributes>
+    	<attributes>
+    		<id>VALUE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>4</intValue>
+    	</attributes>
+    </pieceTypes>
+    
+    <pieceTypes>
+        <pieceName>FOX</pieceName>
+        <movementPattern>OMNI</movementPattern>
+        <attributes>
+            <id>DISTANCE</id>
+            <attrType>INTEGER</attrType>
+            <intValue>30</intValue>
+    	</attributes>
+    	<attributes>
+    		<id>UNBLOCK</id>
+    		<attrType>BOOLEAN</attrType>
+    		<booleanValue>true</booleanValue>
+    	</attributes>
+    	<attributes>
+    		<id>VALUE</id>
+    		<attrType>INTEGER</attrType>
+    		<intValue>5</intValue>
+    	</attributes>
+    	
+    </pieceTypes>
+    <rules>
+    	<id>REMOVE</id>
+    	<intValue></intValue>
+    </rules>
+    <rules>
+    	<id>POINT_CONFLICT</id>
+    	<intValue></intValue>
+    </rules>
+        <rules>
+    	<id>SCORE</id>
+    	<intValue>5</intValue>
+    </rules>
+        <rules>
+    	<id>TURN_LIMIT</id>
+    	<intValue>2</intValue>
+    </rules>
+ </escapeGameInitializer>

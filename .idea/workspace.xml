@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ff5e60cc-5637-4dfd-a9c4-4c61c85d7e0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/escape/EscapeGameBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/EscapeGameBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/GameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/MovementRules$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/MovementRules$Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/MovementRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/MovementRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/board/BoardBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/board/BoardBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/board/BoardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/board/BoardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/board/MasterBoardTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/board/coordinate/CoordinateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/board/coordinate/CoordinateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/game/BetaEscapeGameTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/game/BetaEscapeGameTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/game/EscapeGameInitializerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/master/MasterHexTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/master/MasterHexTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/master/MasterOrthoSquareTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/master/MasterOrthoSquareTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/master/MasterSquareTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/master/MasterSquareTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/rule/Rule.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/rule/Rule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/BoardInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/EscapeGameInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/util/EscapeGameInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/InitializerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/LocationInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/util/LocationInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/PieceTypeInitializer$PieceAttribute.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/util/PieceTypeInitializer$PieceAttribute.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/escape/util/PieceTypeInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/escape/util/PieceTypeInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/master/MasterHexGame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/master/MasterHexGame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/master/MasterOrthoSquareGame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/master/MasterOrthoSquareGame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/master/MasterSquareGame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/master/MasterSquareGame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/EscapeGameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/EscapeGameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/MovementRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/MovementRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/board/BoardBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/board/BoardBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/rule/Rule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/rule/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/util/BoardInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/util/EscapeGameInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/util/EscapeGameInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/util/InitializerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/util/LocationInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/util/LocationInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escape/util/PieceTypeInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escape/util/PieceTypeInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/board/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/board/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/board/MasterBoardTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/board/coordinate/CoordinateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/board/coordinate/CoordinateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/game/BetaEscapeGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/game/BetaEscapeGameTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/game/EscapeGameInitializerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/master/MasterHexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/master/MasterHexTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/master/MasterOrthoSquareTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/master/MasterOrthoSquareTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/escape/master/MasterSquareTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/escape/master/MasterSquareTests.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/bin/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-369090416">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="JAVA/escape" value="1" />
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+          <entry key="UML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/escape">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>escape</OriginalElement>
+              <nodes>
+                <node x="521.0" y="2210.0">escape.board.coordinate.MasterCoordinateTest</node>
+                <node x="434.32569444444516" y="740.0">escape.board.SquareBoard</node>
+                <node x="3024.4025917658732" y="374.0">escape.GameObserver</node>
+                <node x="976.0" y="2210.0">escape.board.coordinate.CoordinateID</node>
+                <node x="2684.9875" y="1338.5">escape.GameManager</node>
+                <node x="1188.4250000000002" y="330.0">escape.board.StandardBoard</node>
+                <node x="1540.9875000000002" y="296.5">escape.board.coordinate.OrthoSquareCoordinate</node>
+                <node x="954.3000000000002" y="1251.0">escape.board.BoardTest</node>
+                <node x="1520.4875000000002" y="1547.5">escape.board.BoardBuilder</node>
+                <node x="2991.779166666667" y="2136.0">escape.master</node>
+                <node x="2673.4875" y="1990.0">escape.EscapeGameBuilder</node>
+                <node x="468.59009176587347" y="101.0">escape.board.coordinate.BetterCoordinate</node>
+                <node x="1175.5625" y="2215.6328125">escape.rule</node>
+                <node x="2725.9875" y="396.0">escape.piece</node>
+                <node x="1763.1826512896828" y="123.0">escape.exception</node>
+                <node x="877.2201512896829" y="707.0">escape.board.HexBoard</node>
+                <node x="1006.8826512896828" y="0.0">escape.board.coordinate.Coordinate</node>
+                <node x="3024.4025917658732" y="872.5">escape.EscapeObserver</node>
+                <node x="3299.4025917658732" y="839.5">escape.EscapeGameManager</node>
+                <node x="0.0" y="2210.0">escape.board.coordinate.CoordinateTest</node>
+                <node x="0.0" y="296.5">escape.board.coordinate.SquareCoordinate</node>
+                <node x="1502.4875000000002" y="740.0">escape.board.OrthoSquareBoard</node>
+                <node x="3431.9025917658732" y="2136.0">escape.game</node>
+                <node x="1944.9875000000002" y="264.0">escape.MovementRules</node>
+                <node x="454.1750000000002" y="296.5">escape.board.coordinate.HexCoordinate</node>
+                <node x="847.8826512896828" y="101.0">escape.board.Board</node>
+                <node x="793.1750000000002" y="363.0">escape.board.LocationType</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="escape.board.coordinate.OrthoSquareCoordinate" target="escape.exception">
+                  <point x="93.0" y="-114.0" />
+                  <point x="1819.9875000000002" y="244.0" />
+                  <point x="1815.3326512896829" y="244.0" />
+                  <point x="-22.34999999999991" y="14.5" />
+                </edge>
+                <edge source="escape.board.BoardBuilder" target="escape.piece">
+                  <point x="191.25" y="-48.0" />
+                  <point x="1966.7375000000002" y="1181.0" />
+                  <point x="2970.362313988095" y="1181.0" />
+                  <point x="2970.362313988095" y="687.0" />
+                  <point x="2820.2732142857144" y="687.0" />
+                  <point x="34.28571428571422" y="14.5" />
+                </edge>
+                <edge source="escape.board.BoardTest" target="escape.board.HexBoard">
+                  <point x="-62.125" y="-344.5" />
+                  <point x="1140.6750000000002" y="1221.0" />
+                  <point x="976.2201512896829" y="1221.0" />
+                  <point x="-99.0" y="202.0" />
+                </edge>
+                <edge source="escape.GameManager" target="escape.board.StandardBoard">
+                  <point x="-173.75" y="-257.0" />
+                  <point x="2719.7375" y="1131.0" />
+                  <point x="1415.720151289683" y="1131.0" />
+                  <point x="1415.720151289683" y="637.0" />
+                  <point x="1382.8000000000002" y="637.0" />
+                  <point x="38.875" y="80.5" />
+                </edge>
+                <edge source="escape.board.OrthoSquareBoard" target="escape.piece">
+                  <point x="179.60000000000002" y="-169.0" />
+                  <point x="1906.5875" y="687.0" />
+                  <point x="2785.9875" y="687.0" />
+                  <point x="0.0" y="14.5" />
+                </edge>
+                <edge source="escape.board.OrthoSquareBoard" target="escape.board.coordinate.OrthoSquareCoordinate">
+                  <point x="0.0" y="-169.0" />
+                  <point x="0.0" y="114.0" />
+                </edge>
+                <edge source="escape.EscapeGameBuilder" target="escape.GameManager">
+                  <point x="0.0" y="-48.0" />
+                  <point x="0.0" y="257.0" />
+                </edge>
+                <edge source="escape.board.HexBoard" target="escape.board.LocationType">
+                  <point x="-79.19999999999982" y="-202.0" />
+                  <point x="996.0201512896831" y="597.0" />
+                  <point x="859.1750000000002" y="597.0" />
+                  <point x="0.0" y="47.5" />
+                </edge>
+                <edge source="escape.board.SquareBoard" target="escape.board.coordinate.SquareCoordinate">
+                  <point x="-165.20000000000005" y="-169.0" />
+                  <point x="475.6256944444451" y="687.0" />
+                  <point x="168.0" y="687.0" />
+                  <point x="0.0" y="114.0" />
+                </edge>
+                <edge source="escape.board.coordinate.OrthoSquareCoordinate" target="escape.board.coordinate.BetterCoordinate">
+                  <point x="-93.0" y="-114.0" />
+                  <point x="1633.9875000000002" y="194.0" />
+                  <point x="596.0900917658735" y="194.0" />
+                  <point x="51.0" y="36.5" />
+                </edge>
+                <edge source="escape.board.SquareBoard" target="escape.exception">
+                  <point x="-82.59999999999991" y="-169.0" />
+                  <point x="558.2256944444453" y="677.0" />
+                  <point x="443.6750000000002" y="677.0" />
+                  <point x="443.6750000000002" y="234.0" />
+                  <point x="1785.5326512896827" y="234.0" />
+                  <point x="-52.15000000000009" y="14.5" />
+                </edge>
+                <edge source="escape.board.OrthoSquareBoard" target="escape.board.LocationType">
+                  <point x="-179.60000000000008" y="-169.0" />
+                  <point x="1547.3875" y="587.0" />
+                  <point x="903.1750000000002" y="587.0" />
+                  <point x="44.0" y="47.5" />
+                </edge>
+                <edge source="escape.board.BoardTest" target="escape.board.SquareBoard">
+                  <point x="-186.375" y="-344.5" />
+                  <point x="1016.4250000000002" y="1231.0" />
+                  <point x="537.5756944444452" y="1231.0" />
+                  <point x="-103.25" y="169.0" />
+                </edge>
+                <edge source="escape.master" target="escape.EscapeGameBuilder">
+                  <point x="-32.5" y="-14.5" />
+                  <point x="3024.279166666667" y="2116.0" />
+                  <point x="2783.4875" y="2116.0" />
+                  <point x="-110.0" y="48.0" />
+                </edge>
+                <edge source="escape.game" target="escape.EscapeGameBuilder">
+                  <point x="-40.333333333333485" y="-14.5" />
+                  <point x="3452.0692584325398" y="2106.0" />
+                  <point x="3003.4875" y="2106.0" />
+                  <point x="110.0" y="48.0" />
+                </edge>
+                <edge source="escape.EscapeGameBuilder" target="escape.board.BoardBuilder">
+                  <point x="-146.66666666666652" y="-48.0" />
+                  <point x="2746.8208333333337" y="1965.0" />
+                  <point x="1775.4875000000002" y="1965.0" />
+                  <point x="0.0" y="48.0" />
+                </edge>
+                <edge source="escape.board.coordinate.BetterCoordinate" target="escape.board.coordinate.Coordinate">
+                  <point x="0.0" y="-36.5" />
+                  <point x="545.0900917658735" y="71.0" />
+                  <point x="1030.3826512896828" y="71.0" />
+                  <point x="-94.0" y="25.5" />
+                </edge>
+                <edge source="escape.EscapeObserver" target="escape.GameObserver">
+                  <point x="0.0" y="-36.5" />
+                  <point x="0.0" y="36.5" />
+                </edge>
+                <edge source="escape.board.BoardBuilder" target="escape.board.OrthoSquareBoard">
+                  <point x="63.75" y="-48.0" />
+                  <point x="112.25" y="169.0" />
+                </edge>
+                <edge source="escape.game" target="escape.board.coordinate.Coordinate">
+                  <point x="40.333333333333485" y="-14.5" />
+                  <point x="3532.7359250992067" y="2116.0" />
+                  <point x="3673.9025917658732" y="2116.0" />
+                  <point x="3673.9025917658732" y="71.0" />
+                  <point x="1218.3826512896828" y="71.0" />
+                  <point x="94.0" y="25.5" />
+                </edge>
+                <edge source="escape.master" target="escape.EscapeGameManager">
+                  <point x="32.5" y="-14.5" />
+                  <point x="3089.279166666667" y="2116.0" />
+                  <point x="3481.4025917658732" y="2116.0" />
+                  <point x="0.0" y="69.5" />
+                </edge>
+                <edge source="escape.GameManager" target="escape.piece">
+                  <point x="-104.25" y="-257.0" />
+                  <point x="2789.2375" y="1191.0" />
+                  <point x="2982.5454489087306" y="1191.0" />
+                  <point x="2982.5454489087306" y="677.0" />
+                  <point x="2837.4160714285717" y="677.0" />
+                  <point x="51.42857142857156" y="14.5" />
+                </edge>
+                <edge source="escape.EscapeGameManager" target="escape.exception">
+                  <point x="-91.0" y="-69.5" />
+                  <point x="3390.4025917658732" y="194.0" />
+                  <point x="1904.732651289683" y="194.0" />
+                  <point x="67.05000000000018" y="14.5" />
+                </edge>
+                <edge source="escape.board.SquareBoard" target="escape.board.StandardBoard">
+                  <point x="82.59999999999991" y="-169.0" />
+                  <point x="723.4256944444451" y="627.0" />
+                  <point x="1227.3000000000002" y="627.0" />
+                  <point x="-116.625" y="80.5" />
+                </edge>
+                <edge source="escape.GameManager" target="escape.exception">
+                  <point x="-34.75" y="-257.0" />
+                  <point x="2858.7375" y="1201.0" />
+                  <point x="3013.9025917658732" y="1201.0" />
+                  <point x="3013.9025917658732" y="214.0" />
+                  <point x="1874.9326512896828" y="214.0" />
+                  <point x="37.25" y="14.5" />
+                </edge>
+                <edge source="escape.board.BoardBuilder" target="escape.board.SquareBoard">
+                  <point x="-191.25" y="-48.0" />
+                  <point x="1584.2375000000002" y="1151.0" />
+                  <point x="744.0756944444452" y="1151.0" />
+                  <point x="103.25" y="169.0" />
+                </edge>
+                <edge source="escape.board.HexBoard" target="escape.board.StandardBoard">
+                  <point x="0.0" y="-202.0" />
+                  <point x="1075.220151289683" y="637.0" />
+                  <point x="1305.0500000000002" y="637.0" />
+                  <point x="-38.875" y="80.5" />
+                </edge>
+                <edge source="escape.board.HexBoard" target="escape.board.coordinate.HexCoordinate">
+                  <point x="-158.39999999999986" y="-202.0" />
+                  <point x="916.820151289683" y="607.0" />
+                  <point x="613.6750000000002" y="607.0" />
+                  <point x="0.0" y="114.0" />
+                </edge>
+                <edge source="escape.board.OrthoSquareBoard" target="escape.exception">
+                  <point x="89.79999999999995" y="-169.0" />
+                  <point x="1816.7875000000001" y="657.0" />
+                  <point x="1934.4875000000002" y="657.0" />
+                  <point x="1934.4875000000002" y="234.0" />
+                  <point x="1845.132651289683" y="234.0" />
+                  <point x="7.4500000000000455" y="14.5" />
+                </edge>
+                <edge source="escape.board.StandardBoard" target="escape.board.Board">
+                  <point x="-77.75" y="-80.5" />
+                  <point x="1266.1750000000002" y="214.0" />
+                  <point x="980.8826512896828" y="214.0" />
+                  <point x="0.0" y="36.5" />
+                </edge>
+                <edge source="escape.board.coordinate.SquareCoordinate" target="escape.board.coordinate.BetterCoordinate">
+                  <point x="-84.0" y="-114.0" />
+                  <point x="84.0" y="214.0" />
+                  <point x="494.09009176587347" y="214.0" />
+                  <point x="-51.0" y="36.5" />
+                </edge>
+                <edge source="escape.board.BoardTest" target="escape.piece">
+                  <point x="186.375" y="-344.5" />
+                  <point x="1389.1750000000002" y="1171.0" />
+                  <point x="2809.273214285715" y="1171.0" />
+                  <point x="2809.273214285715" y="687.0" />
+                  <point x="2803.1303571428575" y="687.0" />
+                  <point x="17.142857142857338" y="14.5" />
+                </edge>
+                <edge source="escape.board.BoardBuilder" target="escape.board.HexBoard">
+                  <point x="-63.75" y="-48.0" />
+                  <point x="1711.7375000000002" y="1141.0" />
+                  <point x="1174.220151289683" y="1141.0" />
+                  <point x="99.0" y="202.0" />
+                </edge>
+                <edge source="escape.board.StandardBoard" target="escape.board.coordinate.Coordinate">
+                  <point x="77.75" y="-80.5" />
+                  <point x="1421.6750000000002" y="204.0" />
+                  <point x="1124.3826512896828" y="204.0" />
+                  <point x="0.0" y="25.5" />
+                </edge>
+                <edge source="escape.board.OrthoSquareBoard" target="escape.board.StandardBoard">
+                  <point x="-89.80000000000007" y="-169.0" />
+                  <point x="1637.1875" y="577.0" />
+                  <point x="1460.5500000000002" y="577.0" />
+                  <point x="116.625" y="80.5" />
+                </edge>
+                <edge source="escape.MovementRules" target="escape.exception">
+                  <point x="0.0" y="-146.5" />
+                  <point x="2315.4875" y="224.0" />
+                  <point x="1860.0326512896827" y="224.0" />
+                  <point x="22.34999999999991" y="14.5" />
+                </edge>
+                <edge source="escape.board.BoardTest" target="escape.board.OrthoSquareBoard">
+                  <point x="62.125" y="-344.5" />
+                  <point x="1264.9250000000002" y="1161.0" />
+                  <point x="1614.7375000000002" y="1161.0" />
+                  <point x="-112.25" y="169.0" />
+                </edge>
+                <edge source="escape.board.Board" target="escape.board.coordinate.Coordinate">
+                  <point x="0.0" y="-36.5" />
+                  <point x="980.8826512896828" y="81.0" />
+                  <point x="1077.3826512896828" y="81.0" />
+                  <point x="-47.0" y="25.5" />
+                </edge>
+                <edge source="escape.board.SquareBoard" target="escape.piece">
+                  <point x="165.20000000000005" y="-169.0" />
+                  <point x="806.0256944444452" y="667.0" />
+                  <point x="2751.701785714286" y="667.0" />
+                  <point x="-34.28571428571422" y="14.5" />
+                </edge>
+                <edge source="escape.EscapeGameBuilder" target="escape.exception">
+                  <point x="146.66666666666652" y="-48.0" />
+                  <point x="3040.1541666666667" y="1965.0" />
+                  <point x="3288.9025917658732" y="1965.0" />
+                  <point x="3288.9025917658732" y="204.0" />
+                  <point x="1889.8326512896829" y="204.0" />
+                  <point x="52.15000000000009" y="14.5" />
+                </edge>
+                <edge source="escape.board.HexBoard" target="escape.piece">
+                  <point x="158.4000000000001" y="-202.0" />
+                  <point x="1233.620151289683" y="677.0" />
+                  <point x="2768.844642857143" y="677.0" />
+                  <point x="-17.142857142857338" y="14.5" />
+                </edge>
+                <edge source="escape.board.coordinate.HexCoordinate" target="escape.exception">
+                  <point x="79.75" y="-114.0" />
+                  <point x="693.4250000000002" y="244.0" />
+                  <point x="1800.4326512896828" y="244.0" />
+                  <point x="-37.25" y="14.5" />
+                </edge>
+                <edge source="escape.board.HexBoard" target="escape.exception">
+                  <point x="79.20000000000005" y="-202.0" />
+                  <point x="1154.420151289683" y="647.0" />
+                  <point x="1923.4875000000002" y="647.0" />
+                  <point x="1923.4875000000002" y="244.0" />
+                  <point x="1830.232651289683" y="244.0" />
+                  <point x="-7.4500000000000455" y="14.5" />
+                </edge>
+                <edge source="escape.EscapeGameManager" target="escape.board.coordinate.Coordinate">
+                  <point x="91.0" y="-69.5" />
+                  <point x="3572.4025917658732" y="687.0" />
+                  <point x="3401.4025917658732" y="687.0" />
+                  <point x="3401.4025917658732" y="81.0" />
+                  <point x="1171.3826512896828" y="81.0" />
+                  <point x="47.0" y="25.5" />
+                </edge>
+                <edge source="escape.board.coordinate.SquareCoordinate" target="escape.exception">
+                  <point x="84.0" y="-114.0" />
+                  <point x="252.0" y="224.0" />
+                  <point x="1770.632651289683" y="224.0" />
+                  <point x="-67.04999999999995" y="14.5" />
+                </edge>
+                <edge source="escape.game" target="escape.EscapeGameManager">
+                  <point x="0.0" y="-14.5" />
+                  <point x="3492.4025917658732" y="1231.0" />
+                  <point x="3602.7359250992067" y="1231.0" />
+                  <point x="121.33333333333348" y="69.5" />
+                </edge>
+                <edge source="escape.rule" target="escape.rule">
+                  <point x="0.0" y="14.5" />
+                  <point x="1231.0625" y="2264.6328125" />
+                  <point x="1155.5625" y="2264.6328125" />
+                  <point x="1155.5625" y="2230.1328125" />
+                  <point x="-55.5" y="-0.0" />
+                </edge>
+                <edge source="escape.GameManager" target="escape.EscapeGameManager">
+                  <point x="173.75" y="-257.0" />
+                  <point x="3067.2375" y="1231.0" />
+                  <point x="3360.0692584325398" y="1231.0" />
+                  <point x="-121.33333333333348" y="69.5" />
+                </edge>
+                <edge source="escape.piece" target="escape.piece">
+                  <point x="-51.428571428571445" y="14.5" />
+                  <point x="2734.5589285714286" y="445.0" />
+                  <point x="2705.9875" y="445.0" />
+                  <point x="2705.9875" y="410.5" />
+                  <point x="-60.0" y="-0.0" />
+                </edge>
+                <edge source="escape.board.coordinate.HexCoordinate" target="escape.board.coordinate.BetterCoordinate">
+                  <point x="-79.75" y="-114.0" />
+                  <point x="533.9250000000002" y="214.0" />
+                  <point x="545.0900917658735" y="214.0" />
+                  <point x="0.0" y="36.5" />
+                </edge>
+                <edge source="escape.GameManager" target="escape.EscapeObserver">
+                  <point x="104.25" y="-257.0" />
+                  <point x="2997.7375" y="1221.0" />
+                  <point x="3214.9025917658732" y="1221.0" />
+                  <point x="63.5" y="36.5" />
+                </edge>
+                <edge source="escape.board.SquareBoard" target="escape.board.LocationType">
+                  <point x="0.0" y="-169.0" />
+                  <point x="640.8256944444452" y="617.0" />
+                  <point x="815.1750000000002" y="617.0" />
+                  <point x="-44.0" y="47.5" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.6689565417102611" x="1295.7677001953125" y="912.7677001953125" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Methods</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/escape/GameManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1033">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/IdeaProjects/CS3733_4" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1518" />
+    <option name="y" value="-334" />
+    <option name="width" value="1785" />
+    <option name="height" value="1028" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Escape-student" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Escape-student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Escape-student" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Escape-student" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Escape-student" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Escape-student" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="escape" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Escape-student" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Escape-student" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="escape" type="462c0819:PsiDirectoryNode" />
+              <item name="board" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589393218578" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff5e60cc-5637-4dfd-a9c4-4c61c85d7e0f" name="Default Changelist" comment="" />
+      <created>1589392325287</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589392325287</updated>
+      <workItem from="1589392338209" duration="848000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="848000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1440" y="-334" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.185836" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="uml://JAVA/escape">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>escape</OriginalElement>
+          <nodes>
+            <node x="521.0" y="2210.0">escape.board.coordinate.MasterCoordinateTest</node>
+            <node x="434.32569444444516" y="740.0">escape.board.SquareBoard</node>
+            <node x="3024.4025917658732" y="374.0">escape.GameObserver</node>
+            <node x="976.0" y="2210.0">escape.board.coordinate.CoordinateID</node>
+            <node x="2684.9875" y="1338.5">escape.GameManager</node>
+            <node x="1188.4250000000002" y="330.0">escape.board.StandardBoard</node>
+            <node x="1540.9875000000002" y="296.5">escape.board.coordinate.OrthoSquareCoordinate</node>
+            <node x="954.3000000000002" y="1251.0">escape.board.BoardTest</node>
+            <node x="1520.4875000000002" y="1547.5">escape.board.BoardBuilder</node>
+            <node x="2991.779166666667" y="2136.0">escape.master</node>
+            <node x="2673.4875" y="1990.0">escape.EscapeGameBuilder</node>
+            <node x="468.59009176587347" y="101.0">escape.board.coordinate.BetterCoordinate</node>
+            <node x="1175.5625" y="2215.6328125">escape.rule</node>
+            <node x="2725.9875" y="396.0">escape.piece</node>
+            <node x="1763.1826512896828" y="123.0">escape.exception</node>
+            <node x="877.2201512896829" y="707.0">escape.board.HexBoard</node>
+            <node x="1006.8826512896828" y="0.0">escape.board.coordinate.Coordinate</node>
+            <node x="3024.4025917658732" y="872.5">escape.EscapeObserver</node>
+            <node x="3299.4025917658732" y="839.5">escape.EscapeGameManager</node>
+            <node x="0.0" y="2210.0">escape.board.coordinate.CoordinateTest</node>
+            <node x="0.0" y="296.5">escape.board.coordinate.SquareCoordinate</node>
+            <node x="1502.4875000000002" y="740.0">escape.board.OrthoSquareBoard</node>
+            <node x="3431.9025917658732" y="2136.0">escape.game</node>
+            <node x="1944.9875000000002" y="264.0">escape.MovementRules</node>
+            <node x="454.1750000000002" y="296.5">escape.board.coordinate.HexCoordinate</node>
+            <node x="847.8826512896828" y="101.0">escape.board.Board</node>
+            <node x="793.1750000000002" y="363.0">escape.board.LocationType</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="escape.board.coordinate.OrthoSquareCoordinate" target="escape.exception">
+              <point x="93.0" y="-114.0" />
+              <point x="1819.9875000000002" y="244.0" />
+              <point x="1815.3326512896829" y="244.0" />
+              <point x="-22.34999999999991" y="14.5" />
+            </edge>
+            <edge source="escape.board.BoardBuilder" target="escape.piece">
+              <point x="191.25" y="-48.0" />
+              <point x="1966.7375000000002" y="1181.0" />
+              <point x="2970.362313988095" y="1181.0" />
+              <point x="2970.362313988095" y="687.0" />
+              <point x="2820.2732142857144" y="687.0" />
+              <point x="34.28571428571422" y="14.5" />
+            </edge>
+            <edge source="escape.board.BoardTest" target="escape.board.HexBoard">
+              <point x="-62.125" y="-344.5" />
+              <point x="1140.6750000000002" y="1221.0" />
+              <point x="976.2201512896829" y="1221.0" />
+              <point x="-99.0" y="202.0" />
+            </edge>
+            <edge source="escape.GameManager" target="escape.board.StandardBoard">
+              <point x="-173.75" y="-257.0" />
+              <point x="2719.7375" y="1131.0" />
+              <point x="1415.720151289683" y="1131.0" />
+              <point x="1415.720151289683" y="637.0" />
+              <point x="1382.8000000000002" y="637.0" />
+              <point x="38.875" y="80.5" />
+            </edge>
+            <edge source="escape.board.OrthoSquareBoard" target="escape.piece">
+              <point x="179.60000000000002" y="-169.0" />
+              <point x="1906.5875" y="687.0" />
+              <point x="2785.9875" y="687.0" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="escape.board.OrthoSquareBoard" target="escape.board.coordinate.OrthoSquareCoordinate">
+              <point x="0.0" y="-169.0" />
+              <point x="0.0" y="114.0" />
+            </edge>
+            <edge source="escape.EscapeGameBuilder" target="escape.GameManager">
+              <point x="0.0" y="-48.0" />
+              <point x="0.0" y="257.0" />
+            </edge>
+            <edge source="escape.board.HexBoard" target="escape.board.LocationType">
+              <point x="-79.19999999999982" y="-202.0" />
+              <point x="996.0201512896831" y="597.0" />
+              <point x="859.1750000000002" y="597.0" />
+              <point x="0.0" y="47.5" />
+            </edge>
+            <edge source="escape.board.SquareBoard" target="escape.board.coordinate.SquareCoordinate">
+              <point x="-165.20000000000005" y="-169.0" />
+              <point x="475.6256944444451" y="687.0" />
+              <point x="168.0" y="687.0" />
+              <point x="0.0" y="114.0" />
+            </edge>
+            <edge source="escape.board.coordinate.OrthoSquareCoordinate" target="escape.board.coordinate.BetterCoordinate">
+              <point x="-93.0" y="-114.0" />
+              <point x="1633.9875000000002" y="194.0" />
+              <point x="596.0900917658735" y="194.0" />
+              <point x="51.0" y="36.5" />
+            </edge>
+            <edge source="escape.board.SquareBoard" target="escape.exception">
+              <point x="-82.59999999999991" y="-169.0" />
+              <point x="558.2256944444453" y="677.0" />
+              <point x="443.6750000000002" y="677.0" />
+              <point x="443.6750000000002" y="234.0" />
+              <point x="1785.5326512896827" y="234.0" />
+              <point x="-52.15000000000009" y="14.5" />
+            </edge>
+            <edge source="escape.board.OrthoSquareBoard" target="escape.board.LocationType">
+              <point x="-179.60000000000008" y="-169.0" />
+              <point x="1547.3875" y="587.0" />
+              <point x="903.1750000000002" y="587.0" />
+              <point x="44.0" y="47.5" />
+            </edge>
+            <edge source="escape.board.BoardTest" target="escape.board.SquareBoard">
+              <point x="-186.375" y="-344.5" />
+              <point x="1016.4250000000002" y="1231.0" />
+              <point x="537.5756944444452" y="1231.0" />
+              <point x="-103.25" y="169.0" />
+            </edge>
+            <edge source="escape.master" target="escape.EscapeGameBuilder">
+              <point x="-32.5" y="-14.5" />
+              <point x="3024.279166666667" y="2116.0" />
+              <point x="2783.4875" y="2116.0" />
+              <point x="-110.0" y="48.0" />
+            </edge>
+            <edge source="escape.game" target="escape.EscapeGameBuilder">
+              <point x="-40.333333333333485" y="-14.5" />
+              <point x="3452.0692584325398" y="2106.0" />
+              <point x="3003.4875" y="2106.0" />
+              <point x="110.0" y="48.0" />
+            </edge>
+            <edge source="escape.EscapeGameBuilder" target="escape.board.BoardBuilder">
+              <point x="-146.66666666666652" y="-48.0" />
+              <point x="2746.8208333333337" y="1965.0" />
+              <point x="1775.4875000000002" y="1965.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="escape.board.coordinate.BetterCoordinate" target="escape.board.coordinate.Coordinate">
+              <point x="0.0" y="-36.5" />
+              <point x="545.0900917658735" y="71.0" />
+              <point x="1030.3826512896828" y="71.0" />
+              <point x="-94.0" y="25.5" />
+            </edge>
+            <edge source="escape.EscapeObserver" target="escape.GameObserver">
+              <point x="0.0" y="-36.5" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="escape.board.BoardBuilder" target="escape.board.OrthoSquareBoard">
+              <point x="63.75" y="-48.0" />
+              <point x="112.25" y="169.0" />
+            </edge>
+            <edge source="escape.game" target="escape.board.coordinate.Coordinate">
+              <point x="40.333333333333485" y="-14.5" />
+              <point x="3532.7359250992067" y="2116.0" />
+              <point x="3673.9025917658732" y="2116.0" />
+              <point x="3673.9025917658732" y="71.0" />
+              <point x="1218.3826512896828" y="71.0" />
+              <point x="94.0" y="25.5" />
+            </edge>
+            <edge source="escape.master" target="escape.EscapeGameManager">
+              <point x="32.5" y="-14.5" />
+              <point x="3089.279166666667" y="2116.0" />
+              <point x="3481.4025917658732" y="2116.0" />
+              <point x="0.0" y="69.5" />
+            </edge>
+            <edge source="escape.GameManager" target="escape.piece">
+              <point x="-104.25" y="-257.0" />
+              <point x="2789.2375" y="1191.0" />
+              <point x="2982.5454489087306" y="1191.0" />
+              <point x="2982.5454489087306" y="677.0" />
+              <point x="2837.4160714285717" y="677.0" />
+              <point x="51.42857142857156" y="14.5" />
+            </edge>
+            <edge source="escape.EscapeGameManager" target="escape.exception">
+              <point x="-91.0" y="-69.5" />
+              <point x="3390.4025917658732" y="194.0" />
+              <point x="1904.732651289683" y="194.0" />
+              <point x="67.05000000000018" y="14.5" />
+            </edge>
+            <edge source="escape.board.SquareBoard" target="escape.board.StandardBoard">
+              <point x="82.59999999999991" y="-169.0" />
+              <point x="723.4256944444451" y="627.0" />
+              <point x="1227.3000000000002" y="627.0" />
+              <point x="-116.625" y="80.5" />
+            </edge>
+            <edge source="escape.GameManager" target="escape.exception">
+              <point x="-34.75" y="-257.0" />
+              <point x="2858.7375" y="1201.0" />
+              <point x="3013.9025917658732" y="1201.0" />
+              <point x="3013.9025917658732" y="214.0" />
+              <point x="1874.9326512896828" y="214.0" />
+              <point x="37.25" y="14.5" />
+            </edge>
+            <edge source="escape.board.BoardBuilder" target="escape.board.SquareBoard">
+              <point x="-191.25" y="-48.0" />
+              <point x="1584.2375000000002" y="1151.0" />
+              <point x="744.0756944444452" y="1151.0" />
+              <point x="103.25" y="169.0" />
+            </edge>
+            <edge source="escape.board.HexBoard" target="escape.board.StandardBoard">
+              <point x="0.0" y="-202.0" />
+              <point x="1075.220151289683" y="637.0" />
+              <point x="1305.0500000000002" y="637.0" />
+              <point x="-38.875" y="80.5" />
+            </edge>
+            <edge source="escape.board.HexBoard" target="escape.board.coordinate.HexCoordinate">
+              <point x="-158.39999999999986" y="-202.0" />
+              <point x="916.820151289683" y="607.0" />
+              <point x="613.6750000000002" y="607.0" />
+              <point x="0.0" y="114.0" />
+            </edge>
+            <edge source="escape.board.OrthoSquareBoard" target="escape.exception">
+              <point x="89.79999999999995" y="-169.0" />
+              <point x="1816.7875000000001" y="657.0" />
+              <point x="1934.4875000000002" y="657.0" />
+              <point x="1934.4875000000002" y="234.0" />
+              <point x="1845.132651289683" y="234.0" />
+              <point x="7.4500000000000455" y="14.5" />
+            </edge>
+            <edge source="escape.board.StandardBoard" target="escape.board.Board">
+              <point x="-77.75" y="-80.5" />
+              <point x="1266.1750000000002" y="214.0" />
+              <point x="980.8826512896828" y="214.0" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="escape.board.coordinate.SquareCoordinate" target="escape.board.coordinate.BetterCoordinate">
+              <point x="-84.0" y="-114.0" />
+              <point x="84.0" y="214.0" />
+              <point x="494.09009176587347" y="214.0" />
+              <point x="-51.0" y="36.5" />
+            </edge>
+            <edge source="escape.board.BoardTest" target="escape.piece">
+              <point x="186.375" y="-344.5" />
+              <point x="1389.1750000000002" y="1171.0" />
+              <point x="2809.273214285715" y="1171.0" />
+              <point x="2809.273214285715" y="687.0" />
+              <point x="2803.1303571428575" y="687.0" />
+              <point x="17.142857142857338" y="14.5" />
+            </edge>
+            <edge source="escape.board.BoardBuilder" target="escape.board.HexBoard">
+              <point x="-63.75" y="-48.0" />
+              <point x="1711.7375000000002" y="1141.0" />
+              <point x="1174.220151289683" y="1141.0" />
+              <point x="99.0" y="202.0" />
+            </edge>
+            <edge source="escape.board.StandardBoard" target="escape.board.coordinate.Coordinate">
+              <point x="77.75" y="-80.5" />
+              <point x="1421.6750000000002" y="204.0" />
+              <point x="1124.3826512896828" y="204.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="escape.board.OrthoSquareBoard" target="escape.board.StandardBoard">
+              <point x="-89.80000000000007" y="-169.0" />
+              <point x="1637.1875" y="577.0" />
+              <point x="1460.5500000000002" y="577.0" />
+              <point x="116.625" y="80.5" />
+            </edge>
+            <edge source="escape.MovementRules" target="escape.exception">
+              <point x="0.0" y="-146.5" />
+              <point x="2315.4875" y="224.0" />
+              <point x="1860.0326512896827" y="224.0" />
+              <point x="22.34999999999991" y="14.5" />
+            </edge>
+            <edge source="escape.board.BoardTest" target="escape.board.OrthoSquareBoard">
+              <point x="62.125" y="-344.5" />
+              <point x="1264.9250000000002" y="1161.0" />
+              <point x="1614.7375000000002" y="1161.0" />
+              <point x="-112.25" y="169.0" />
+            </edge>
+            <edge source="escape.board.Board" target="escape.board.coordinate.Coordinate">
+              <point x="0.0" y="-36.5" />
+              <point x="980.8826512896828" y="81.0" />
+              <point x="1077.3826512896828" y="81.0" />
+              <point x="-47.0" y="25.5" />
+            </edge>
+            <edge source="escape.board.SquareBoard" target="escape.piece">
+              <point x="165.20000000000005" y="-169.0" />
+              <point x="806.0256944444452" y="667.0" />
+              <point x="2751.701785714286" y="667.0" />
+              <point x="-34.28571428571422" y="14.5" />
+            </edge>
+            <edge source="escape.EscapeGameBuilder" target="escape.exception">
+              <point x="146.66666666666652" y="-48.0" />
+              <point x="3040.1541666666667" y="1965.0" />
+              <point x="3288.9025917658732" y="1965.0" />
+              <point x="3288.9025917658732" y="204.0" />
+              <point x="1889.8326512896829" y="204.0" />
+              <point x="52.15000000000009" y="14.5" />
+            </edge>
+            <edge source="escape.board.HexBoard" target="escape.piece">
+              <point x="158.4000000000001" y="-202.0" />
+              <point x="1233.620151289683" y="677.0" />
+              <point x="2768.844642857143" y="677.0" />
+              <point x="-17.142857142857338" y="14.5" />
+            </edge>
+            <edge source="escape.board.coordinate.HexCoordinate" target="escape.exception">
+              <point x="79.75" y="-114.0" />
+              <point x="693.4250000000002" y="244.0" />
+              <point x="1800.4326512896828" y="244.0" />
+              <point x="-37.25" y="14.5" />
+            </edge>
+            <edge source="escape.board.HexBoard" target="escape.exception">
+              <point x="79.20000000000005" y="-202.0" />
+              <point x="1154.420151289683" y="647.0" />
+              <point x="1923.4875000000002" y="647.0" />
+              <point x="1923.4875000000002" y="244.0" />
+              <point x="1830.232651289683" y="244.0" />
+              <point x="-7.4500000000000455" y="14.5" />
+            </edge>
+            <edge source="escape.EscapeGameManager" target="escape.board.coordinate.Coordinate">
+              <point x="91.0" y="-69.5" />
+              <point x="3572.4025917658732" y="687.0" />
+              <point x="3401.4025917658732" y="687.0" />
+              <point x="3401.4025917658732" y="81.0" />
+              <point x="1171.3826512896828" y="81.0" />
+              <point x="47.0" y="25.5" />
+            </edge>
+            <edge source="escape.board.coordinate.SquareCoordinate" target="escape.exception">
+              <point x="84.0" y="-114.0" />
+              <point x="252.0" y="224.0" />
+              <point x="1770.632651289683" y="224.0" />
+              <point x="-67.04999999999995" y="14.5" />
+            </edge>
+            <edge source="escape.game" target="escape.EscapeGameManager">
+              <point x="0.0" y="-14.5" />
+              <point x="3492.4025917658732" y="1231.0" />
+              <point x="3602.7359250992067" y="1231.0" />
+              <point x="121.33333333333348" y="69.5" />
+            </edge>
+            <edge source="escape.rule" target="escape.rule">
+              <point x="0.0" y="14.5" />
+              <point x="1231.0625" y="2264.6328125" />
+              <point x="1155.5625" y="2264.6328125" />
+              <point x="1155.5625" y="2230.1328125" />
+              <point x="-55.5" y="-0.0" />
+            </edge>
+            <edge source="escape.GameManager" target="escape.EscapeGameManager">
+              <point x="173.75" y="-257.0" />
+              <point x="3067.2375" y="1231.0" />
+              <point x="3360.0692584325398" y="1231.0" />
+              <point x="-121.33333333333348" y="69.5" />
+            </edge>
+            <edge source="escape.piece" target="escape.piece">
+              <point x="-51.428571428571445" y="14.5" />
+              <point x="2734.5589285714286" y="445.0" />
+              <point x="2705.9875" y="445.0" />
+              <point x="2705.9875" y="410.5" />
+              <point x="-60.0" y="-0.0" />
+            </edge>
+            <edge source="escape.board.coordinate.HexCoordinate" target="escape.board.coordinate.BetterCoordinate">
+              <point x="-79.75" y="-114.0" />
+              <point x="533.9250000000002" y="214.0" />
+              <point x="545.0900917658735" y="214.0" />
+              <point x="0.0" y="36.5" />
+            </edge>
+            <edge source="escape.GameManager" target="escape.EscapeObserver">
+              <point x="104.25" y="-257.0" />
+              <point x="2997.7375" y="1221.0" />
+              <point x="3214.9025917658732" y="1221.0" />
+              <point x="63.5" y="36.5" />
+            </edge>
+            <edge source="escape.board.SquareBoard" target="escape.board.LocationType">
+              <point x="0.0" y="-169.0" />
+              <point x="640.8256944444452" y="617.0" />
+              <point x="815.1750000000002" y="617.0" />
+              <point x="-44.0" y="47.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6689565417102611" x="1295.7677001953125" y="912.7677001953125" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/escape/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1033">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

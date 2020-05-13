@@ -8,6 +8,7 @@ import escape.board.coordinate.BetterCoordinate;
 import escape.board.coordinate.Coordinate;
 import escape.board.coordinate.CoordinateID;
 import escape.board.coordinate.OrthoSquareCoordinate;
+import escape.exception.EscapeException;
 import escape.piece.EscapePiece;
 import escape.piece.MovementPatternID;
 import escape.piece.PieceAttributeID;
@@ -48,11 +49,17 @@ public class MovementRules {
 
 	public static boolean initialCheck(StandardBoard theBoard, Coordinate from, Coordinate to) {
 		EscapePiece startingPiece = theBoard.getPieceAt(from);
-		if(startingPiece == null) return false; //If there's no piece at the starting location
+		if(startingPiece == null) { //If there's no piece at the starting location
+			throw new EscapeException("The initial check failed- there isn't a piece you're trying to move from!");
+		}
 		LocationType potentialBlock = theBoard.getLocationType(to);
-		if(potentialBlock.equals(LocationType.BLOCK)) return false; //Can't end on blocked location
+		if(potentialBlock.equals(LocationType.BLOCK)) {  //Can't end on blocked location
+			throw new EscapeException("The initial check failed- you cannot land a piece on a blocked location!");
+		}
 		EscapePiece potentialEndPiece = theBoard.getPieceAt(to);
-		if(potentialEndPiece != null && potentialEndPiece.getPlayer().equals(startingPiece.getPlayer())) return false; //Can't end on a piece of the same type
+		if(potentialEndPiece != null && potentialEndPiece.getPlayer().equals(startingPiece.getPlayer()))  {
+			throw new EscapeException("The initial check failed- you cannot land on a piece from the same team!");
+		}
 		return true;
 	}
 	
@@ -60,11 +67,15 @@ public class MovementRules {
 		PieceAttribute movementAttribute = getMovementAttribute(pti);
 		int movementAmt = movementAttribute.getIntValue();
 		
-		if(from.distanceTo(to) > movementAmt) return false; //If the literal distance between the coordinates is too much in general, then nope
+		if(from.distanceTo(to) > movementAmt) { //If the literal distance between the coordinates is too much in general, then nope
+			throw new EscapeException("End distance is too far away!");
+		}
 		if(pti.getMovementPattern().equals(MovementPatternID.ORTHOGONAL)) { //If orthogonal movement pattern on a regular square board, distance between square coordinates don't give accurate ability to travel. Need between orthosquare coordinates
 			OrthoSquareCoordinate orthoFrom = OrthoSquareCoordinate.makeCoordinate(from.getX(), from.getY());
 			OrthoSquareCoordinate orthoTo = OrthoSquareCoordinate.makeCoordinate(to.getX(), to.getY());
-			if(orthoFrom.distanceTo(orthoTo) > movementAmt) return false;
+			if(orthoFrom.distanceTo(orthoTo) > movementAmt) {
+				throw new EscapeException("End distance is too far away!");
+			}
 		}
 		return true;
 	}
@@ -119,7 +130,7 @@ public class MovementRules {
 						}
 						else if (potentialPiece == null || reached) { //Otherwise, if there's not a piece there just get the spot. Or if it's the destination add that bish. No need to test if there is a piece there but you can't jump b/c you would just break
 							Node corner = new Node(home, home.dist + 1, home.x + x, home.y + y); //Already tested if piece at destination is of same kind, so since we know it's not and we are at the dest, even though a piece is there we are good
-							returner.add(corner);
+							returner.add(corner); 
 						}
 					}
 				}
@@ -211,10 +222,14 @@ public class MovementRules {
 		int xDif = Math.abs(to.getX() - from.getX());
 		int yDif = Math.abs(to.getY() - from.getY());
 		
-		if(xDif != 0 && yDif != 0 && xDif!=yDif) return false; //Not left or right, up or down, or diagional
+		if(xDif != 0 && yDif != 0 && xDif!=yDif) { //Not left or right, up or down, or diagional
+			throw new EscapeException("Movement is linear, but the destination isn't on a linear path!");
+		}; 
 		
 		if(to.getX() != from.getX() && to.getY() != from.getY()) { //Either not on path or on diagonal
-			if(xDif == yDif && theBoard.getBoardType() == CoordinateID.ORTHOSQUARE) return false; //On a diagonal and it's an orthosquare board
+			if(xDif == yDif && theBoard.getBoardType() == CoordinateID.ORTHOSQUARE) { //On a diagonal and it's an orthosquare board
+				throw new EscapeException("Destination is diagonal from piece on an orthosquare board. Cannot reach linear!");
+			}
 		}
 		
 		
@@ -241,8 +256,10 @@ public class MovementRules {
 		int xDir = Integer.compare(to.getX(), from.getX());
 		int yDir = Integer.compare(to.getY(), from.getY());
 		
-		if(xDif != 0 && yDif != 0 && xDir == yDir && theBoard.getBoardType() == CoordinateID.HEX) return false; //Hex boards don't have up-right ordown-left diags, so if it's diagonal and either of those return false
+		if(xDif != 0 && yDif != 0 && xDir == yDir && theBoard.getBoardType() == CoordinateID.HEX) { //Hex boards don't have up-right ordown-left diags, so if it's diagonal and either of those throw the false exception
+			throw new EscapeException("Movement is linear, but the destination isn't on a linear path on this hex board!");
 
+		}
 		int nextX = from.getX() + xDir;
 		int nextY = from.getY() + yDir;
 		
@@ -252,18 +269,18 @@ public class MovementRules {
 		while(nextX != to.getX() || nextY != to.getY()) { //Go toward dest- check if need to jump or there's a blocked spot
 			
 			if(theBoard.getPieceAt(theBoard.makeProperCoordinate(nextX, nextY)) != null) { //If there's a piece in the way, check if it can jump. If it's jumping twice in a row that's a no go
-				if(!canJump) return false;
-				if(justJumped) return false; //Can't jump twice in a row
+				if(!canJump) throw new EscapeException("Piece in the way on the linear path!");
+				if(justJumped) throw new EscapeException("Two pieces in a row on the way on the linear path!"); //Can't jump twice in a row
 				justJumped = true; //Let it jump
 			}
 			else justJumped = false; //If there's not a piece there, it's not gonna jump
 			
 			switch(theBoard.getLocationType(theBoard.makeProperCoordinate(nextX, nextY))) { //If there's a block or an exit then like that's no good
 				case BLOCK: //If it has unblock, should pass right through this
-					if(!canUnblock) return false;
+					if(!canUnblock) throw new EscapeException("Blocked spot is on the linear path, and cannot pass through!");
 					break;
 				case EXIT: //If it's exit, it falls through so false
-					return false;
+					throw new EscapeException("Exit spot is on the linear path, cannot pass through!");
 				case CLEAR:
 					break;
 			}
@@ -301,7 +318,7 @@ public class MovementRules {
 				break;
 			case ORTHOGONAL: newNeighbors = findOrthogNeighbors(n, theBoard, canJump, canUnblock, to); //Grab the next neighbors
 				break;
-			case LINEAR: return false; //Should've never gotten here
+			case LINEAR: throw new EscapeException("How'd you do that? Sneaky... regardless we should've already checked linear movement and you can't do it"); //Should've never gotten here
 			}
 			for(Node k : newNeighbors) { //Sort through the new neighbors
 				if(k.dist <= movementAmt) { //Check if this neighbor isn't too far away to reach
@@ -309,9 +326,9 @@ public class MovementRules {
 					neighbors.add(k); //Add to the END of neighbors this node. BFS because go over each node, check the neighbors, put them at the end of the list. Would be DFS if we put the nodes right after the one we are looking at. Instead we put them at the end of the arraylist
 				}
 			}
-			neighbors.remove(0);
+			neighbors.remove(0); 
 		}
-		return false;
+		throw new EscapeException("Unable to travel to destination!");
 	}
 	
 	public static boolean checkMovement(PieceTypeInitializer pti, StandardBoard theBoard, BetterCoordinate from, BetterCoordinate to) {

@@ -36,13 +36,7 @@ import escape.piece.Player;
  */
 class BoardTest
 {	
-	@Test
-	void makeSquareBoard() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/SquareBoardConfig1.xml"));
-		SquareBoard theBoard = (SquareBoard) bb.makeBoard();
-		assertNotNull(theBoard);
-		
-	}
+
 
 	@ParameterizedTest
 	@MethodSource("ValidFiniteSquareBoardBounds")
@@ -116,15 +110,6 @@ class BoardTest
 	}
 
 
-	@Test
-	void testBlockedSquarePiecePlacementFromConfigFile() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/SquareBoardConfig1.xml"));
-		SquareBoard theBoard = (SquareBoard) bb.makeBoard();
-		EscapePiece testPut = EscapePiece.makePiece(Player.PLAYER1, PieceName.FOX);
-		assertThrows(EscapeException.class, () -> {
-			theBoard.putPieceAt(testPut, SquareCoordinate.makeCoordinate(3, 5));
-		});
-	}
 
 	@Test
 	void testBlockedSquarePiecePlacementFromMake() throws Exception {
@@ -171,12 +156,7 @@ class BoardTest
 	 * Beginning of OrthoSquareBoard tests
 	 */
 
-	@Test
-	void makeOrthoSquareBoard() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/OrthoSquareBoardConfig1.xml"));
-		OrthoSquareBoard theBoard = (OrthoSquareBoard) bb.makeBoard();
-		assertNotNull(theBoard);
-	}
+
 
 	@ParameterizedTest
 	@MethodSource("ValidFiniteSquareBoardBounds")
@@ -218,16 +198,6 @@ class BoardTest
 	}
 
 	@Test
-	void testBlockedOrthoSquarePiecePlacementFromConfigFile() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/OrthoSquareBoardConfig1.xml"));
-		OrthoSquareBoard theBoard = (OrthoSquareBoard) bb.makeBoard();
-		EscapePiece testPut = EscapePiece.makePiece(Player.PLAYER1, PieceName.FOX);
-		assertThrows(EscapeException.class, () -> {
-			theBoard.putPieceAt(testPut, OrthoSquareCoordinate.makeCoordinate(3, 5));
-		});
-	}
-
-	@Test
 	void testBlockedOrthoSquarePiecePlacementFromMake() throws Exception {
 		OrthoSquareBoard theBoard = new OrthoSquareBoard(8, 8);
 		OrthoSquareCoordinate blockedCoord = OrthoSquareCoordinate.makeCoordinate(3, 3);
@@ -265,13 +235,6 @@ class BoardTest
 
 	/* Beginning of finite HexBoard tests */
 
-	@Test
-	void makeFiniteHexBoard() throws Exception {
-		BoardBuilder hb = new BoardBuilder(new File("config/board/HexBoardConfig1.xml"));
-		HexBoard theBoard = (HexBoard) hb.makeBoard();
-		assertNotNull(theBoard);
-	}
-	
 	@ParameterizedTest
 	@MethodSource("ValidFiniteSquareBoardBounds")
 	void testValidhexBoardBounds(int x, int y) throws Exception {
@@ -319,27 +282,6 @@ class BoardTest
 				Arguments.of(-5, -5));
 	}
 
-	@Test
-	void testBlockedHexPiecePlacementFromConfigFile() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/HexBoardConfig1.xml"));
-		HexBoard theBoard = (HexBoard) bb.makeBoard();
-		EscapePiece testPut = EscapePiece.makePiece(Player.PLAYER1, PieceName.FOX);
-		assertThrows(EscapeException.class, () -> {
-			theBoard.putPieceAt(testPut, HexCoordinate.makeCoordinate(3, 5));
-		});
-	}
-
-	@Test
-	void testBlockedHexPiecePlacementFromMake() throws Exception {
-		HexBoard theBoard = new HexBoard(8, 8);
-		HexCoordinate blockedCoord = HexCoordinate.makeCoordinate(3, -3);
-		theBoard.setLocationType(blockedCoord, LocationType.BLOCK);
-		EscapePiece testPut = EscapePiece.makePiece(Player.PLAYER1, PieceName.FOX);
-		assertThrows(EscapeException.class, () -> {
-			theBoard.putPieceAt(testPut, blockedCoord);
-		});
-	}
-
 	@ParameterizedTest
 	@MethodSource("BadHexCoordinatePlacements")
 	void testBadHexPiecePlacement(int x, int y) throws Exception {
@@ -375,12 +317,7 @@ class BoardTest
 
 	/* Beginning of Infinite Hex Board tests */
 
-	@Test
-	void makeInfiniteHexBoardFromFile() throws Exception {
-		BoardBuilder hb = new BoardBuilder(new File("config/board/HexBoardConfig2.xml"));
-		HexBoard theBoard = (HexBoard) hb.makeBoard();
-		assertNotNull(theBoard);
-	}
+
 	
 	@Test
 	void makeInfiniteHexBoard() throws Exception {
@@ -442,15 +379,7 @@ class BoardTest
 				Arguments.of(1231519, 0));
 	}
 	
-	@Test
-	void testBlockedInfiniteHexPiecePlacementFromConfigFile() throws Exception {
-		BoardBuilder bb = new BoardBuilder(new File("config/board/HexBoardConfig2.xml"));
-		HexBoard theBoard = (HexBoard) bb.makeBoard();
-		EscapePiece testPut = EscapePiece.makePiece(Player.PLAYER1, PieceName.FOX);
-		assertThrows(EscapeException.class, () -> {
-			theBoard.putPieceAt(testPut, HexCoordinate.makeCoordinate(3, 5));
-		});
-	}
+
 
 	@Test
 	void testBlockedInfiniteHexPiecePlacementFromMake() throws Exception {

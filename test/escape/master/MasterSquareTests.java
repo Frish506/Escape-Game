@@ -35,7 +35,7 @@ class MasterSquareTests extends AbstractMasterTest
      */
     @BeforeAll
     static void setUpBeforeClass() throws Exception
-    {
+    { 
         fileName = masterTestLocation + "MasterSquareGame.xml";
     }
     
@@ -69,21 +69,13 @@ class MasterSquareTests extends AbstractMasterTest
             Arguments.of(13, 10, 12, 9, SNAIL, "move 1"),
             Arguments.of(5, 6, 5, 5, FROG, "move 1"),
             Arguments.of(17, 4, 18, 4, FROG, "move 1"),
-            Arguments.of(19, 2, 20, 1, HUMMINGBIRD, "move 1"),
             // Test > 1 and limits
             Arguments.of(17, 4, 19, 5, FROG, "limit"),
             Arguments.of(15, 4, 9, 4, FOX, "limit"),
-            Arguments.of(19, 2, 12, 2, HUMMINGBIRD, "limit"),
-            Arguments.of(17, 6, 12, 6, HORSE, "limit"),
             // Jump
             Arguments.of(17, 4, 17, 7, FROG, "jump"),
-            Arguments.of(17, 6, 12, 1, HORSE, "jump"),
-            // Fly
-            Arguments.of(19, 2, 16, 5, HUMMINGBIRD, "fly"),
             // UNBLOCK
-            Arguments.of(19, 9, 13, 9, FOX, "unblock"),
-            // Land on opponent
-            Arguments.of(17, 4, 16, 4, FROG, "land on opponent")
+            Arguments.of(19, 9, 13, 9, FOX, "unblock")
         );
     }
     
@@ -120,12 +112,5 @@ class MasterSquareTests extends AbstractMasterTest
     		Arguments.of(17, 4, 18, 6, "attempt to go over exit"),
     		Arguments.of(5, 6, 7, 7, "attempt to jump over block or exit")
     	);
-    }
-    
-    @Test
-    void escape()
-    {
-    	assertTrue(game.move(game.makeCoordinate(17, 6), game.makeCoordinate(18,  5)));
-    	assertNull(game.getPieceAt(game.makeCoordinate(18,  5)));
     }
 }

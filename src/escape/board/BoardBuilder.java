@@ -31,7 +31,6 @@ import escape.util.*;
 public class BoardBuilder
 {
 	private EscapeGameInitializer gi;
-	private BoardInitializer bi;
 	/**
 	 * The constructor for this takes a file name. It is either an absolute path
 	 * or a path relative to the beginning of this project.
@@ -39,12 +38,7 @@ public class BoardBuilder
 	 * @throws Exception 
 	 */
 	
-	public BoardBuilder(File fileName) throws Exception
-	{
-		JAXBContext contextObj = JAXBContext.newInstance(BoardInitializer.class);
-        Unmarshaller mub = contextObj.createUnmarshaller();
-        bi = (BoardInitializer)mub.unmarshal(new FileReader(fileName));
-	}
+
 	
 	public BoardBuilder(EscapeGameInitializer egi) {
 		gi = egi;

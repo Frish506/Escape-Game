@@ -1,0 +1,1 @@
+var CodeMR_ProjectMetrics = {"Project Name":"Escape-hfrishman", "Number of Highly Problematic Classes":0, "Number of Entities":33, "Number of Problematic Classes":1, "Class Lines of Code":830, "Number of External Packages":4, "Number of Packages":7, "Number of External Entities":29}

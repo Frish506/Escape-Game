@@ -49,7 +49,7 @@ class MasterOrthoSquareTests extends AbstractMasterTest
     @MethodSource("validMoveProvider")
     void validMove(int x1, int y1, int x2, int y2, PieceName p, String test)
     {
-        Coordinate c1 = game.makeCoordinate(x1,y1);
+        Coordinate c1 = game.makeCoordinate(x1,y1); 
         Coordinate c2 = game.makeCoordinate(x2, y2);
         assertEquals(test, p, game.getPieceAt(c1).getName());
         assertTrue(test, game.move(c1,  c2));
@@ -70,13 +70,8 @@ class MasterOrthoSquareTests extends AbstractMasterTest
             // Test > 1 and limits
             Arguments.of(17, 4, 19, 5, FROG, "limit"),
             Arguments.of(15, 4, 9, 4, FOX, "limit"),
-            Arguments.of(19, 2, 12, 2, HUMMINGBIRD, "limit"),
-            Arguments.of(17, 6, 22, 6, HORSE, "limit"),
             // Jump
             Arguments.of(17, 4, 17, 7, FROG, "jump"),
-            Arguments.of(17, 6, 12, 6, HORSE, "jump"),
-            // Fly
-            Arguments.of(19, 2, 19, 5, HUMMINGBIRD, "fly"),
             // UNBLOCK
             Arguments.of(19, 9, 13, 9, FOX, "unblock"),
             // Land on opponent
@@ -114,11 +109,5 @@ class MasterOrthoSquareTests extends AbstractMasterTest
             
     	);
     }
-    
-    @Test
-    void escape()
-    {
-    	assertTrue(game.move(game.makeCoordinate(17, 6), game.makeCoordinate(18,  5)));
-    	assertNull(game.getPieceAt(game.makeCoordinate(18,  5)));
-    }
+   
 }

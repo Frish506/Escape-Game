@@ -30,6 +30,7 @@ import escape.board.coordinate.OrthoSquareCoordinate;
 import escape.board.coordinate.SquareCoordinate;
 import escape.exception.EscapeException;
 import escape.piece.PieceName;
+import escape.util.PieceTypeInitializer;
 
 
 /**
@@ -71,7 +72,6 @@ class BetaEscapeGameTests
         EscapeGameBuilder egb 
         = new EscapeGameBuilder(f);
     	EscapeGameManager emg = egb.makeGameManager();
-    	assertNotNull(emg);
     }
     
     //Using examples he gave us
@@ -194,7 +194,7 @@ class BetaEscapeGameTests
     	SquareCoordinate fr = SquareCoordinate.makeCoordinate(5, 5);
     	emg.putPieceAt(fr, PieceName.HORSE);
     	SquareCoordinate to = SquareCoordinate.makeCoordinate(x, y);
-    	assertTrue(emg.move(fr, to));	
+    	assertTrue(emg.move(fr, to));
     }
     
     //Using examples he gave us
